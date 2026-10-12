@@ -1,0 +1,1709 @@
+﻿round,group,cmd,expect,got,ok,note
+1,基础,AT,OK,"AT
+
+OK
+",True,
+1,基础,ATE0,OK,"ATE0
+
+OK
+",True,
+1,基础,AT (回显关闭),OK 且不回显,"
+OK
+",True,
+1,基础,ATE1,OK,"
+OK
+",True,
+1,基础,AT+GMR,版本信息 + OK,"AT+GMR
+
+WT32-ETH01_AT_V1.1
+ESP-IDF v5.3.2
+OK
+",True,
+1,基础,AT+UART_DEF?,+UART_DEF:... + OK,"AT+UART_DEF?
++UART_DEF:115200,8,1,0,0
+OK
+",True,
+1,基础,"AT+UART_DEF=115200,8,1,0,0",OK,"AT+UART_DEF=115200,8,1,0,0
+
+OK
+",True,
+1,基础,AT+PASSCHANNEL?,+PASSCHANNEL:1~6,"AT+PASSCHANNEL?
++PASSCHANNEL:1
+OK
+",True,
+1,基础,AT+PASSCHANNEL=1,OK,"AT+PASSCHANNEL=1
+
+OK
+",True,
+1,WiFi,AT+CWMODE?,+CWMODE:0~3,"AT+CWMODE?
++CWMODE:1
+OK
+",True,
+1,WiFi,AT+CWMODE=1,OK,"AT+CWMODE=1
+
+OK
+",True,
+1,WiFi,"AT+CWJAP=""%s"",""***""",<SSID>,"AT+CWJAP=""<SSID>"",""<PASSWORD>""
+
+OK
+",True,
+1,WiFi,AT+CWJAP?,"+CWJAP:ssid,bssid,ch,rssi","AT+CWJAP?
++CWJAP:""<SSID>"",<AP_BSSID>,11,-50
+OK
+",True,
+1,以太网,AT+CWDHCP_DEF?,+CWDHCP_DEF:... + OK,"AT+CWDHCP_DEF?
++CWDHCP_DEF:3,1
+DHCP:1
+OK
+",True,
+1,以太网,"AT+CWDHCP_DEF=3,1",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+1,以太网,AT+CIPETH_DEF?,"+CIPETH_DEF:ip,gw,mask","AT+CIPETH_DEF?
++CIPETH_DEF:""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+OK
+",True,
+1,以太网,"AT+CIPETH_DEF=""192.168.2.250"",...",OK,"AT+CIPETH_DEF=""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+
+OK
+",True,
+1,以太网,"AT+CWDHCP_DEF=3,1 (恢复)",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+1,TCP/IP,AT+CIFSR,6 行 IP/MAC + OK,"AT+CIFSR
+
++CIFSR:APIP,""192.168.4.1""
++CIFSR:APMAC,""<MAC>""
++CIFSR:STAIP,""<LOCAL_IP>""
++CIFSR:STAMAC,""<MAC>""
++CIFSR:STADHCP,1,0
++CIFSR:ETHIP,""""
++CIFSR:ETHMAC,""<MAC>""
+OK
+",True,
+1,TCP/IP,"AT+CIPSTART=""TCPC"",<HOST_IP>,8888",OK,"AT+CIPSTART=""TCPC"",""<HOST_IP>"",8888
+
+OK
+",True,
+1,TCP/IP,AT+CIPSEND=5,提示符 >,"AT+CIPSEND=5
+
+> ",True,
+1,TCP/IP,发送 5 字节 (HELLO),Recv 5 bytes + SEND OK,"
+Recv 5 bytes
+SEND OK
+HELLO",True,
+1,TCP/IP,服务端收到 TCP 数据,服务端记录到连接,"[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",True,
+1,TCP/IP,AT+CIPCLOSE,CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+1,TCP/IP,"AT+CIPSTART=""UDPC"",<HOST_IP>,8889",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",8889
+
+OK
+",True,
+1,TCP/IP,发送 4 字节 (PING/UDP),Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+1,TCP/IP,服务端收到 UDP 数据,服务端记录到报文,hits=1,True,
+1,TCP/IP,AT+CIPCLOSE (UDP),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+1,TCP/IP,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999
+
+OK
+",True,
+1,TCP/IP,AT+CIPSEND=4 (回环),提示符 >,"AT+CIPSEND=4
+
+> ",True,
+1,TCP/IP,发送 4 字节并收到 SEND OK,Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+1,TCP/IP,服务端收到完整 PING 包,单个 4 字节报文,[b'PING'],True,
+1,TCP/IP,回显数据回打串口,串口收到 PING, Recv 4 bytes SEND OK PING,True,
+1,TCP/IP,AT+CIPCLOSE (回环),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+1,TCP/IP,"AT+CIPSTART=""HTPC"",...",200 OK + 正文 + OK,"AT+CIPSTART=""HTPC"",""http://<HOST_IP>:8000/test.txt""
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 22
+Connection: close
+
+WT32-ETH01-AT-TEST-OK
+
+OK
+",True,
+1,TCP/IP,服务端收到 HTTP 请求,hits>=1,hits=1,True,
+1,TCP/IP,AT+CIPMODE?,+CIPMODE:0,"AT+CIPMODE?
++CIPMODE:0
+OK
+",True,
+1,TCP/IP,AT+CIPMODE=1,OK,"AT+CIPMODE=1
+
+OK
+",True,
+1,TCP/IP,透传数据回环,收到原样数据,,True,
+1,TCP/IP,+++ 退出透传,+++ 后 AT 应答 OK,"AT
+
+OK
+",True,
+1,TCP/IP,AT+CIPMODE=0,OK,"AT+CIPMODE=0
+
+OK
+",True,
+1,TCP/IP,AT+CIPCLOSE (透传),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+2,基础,AT,OK,"AT
+
+OK
+",True,
+2,基础,ATE0,OK,"ATE0
+
+OK
+",True,
+2,基础,AT (回显关闭),OK 且不回显,"
+OK
+",True,
+2,基础,ATE1,OK,"
+OK
+",True,
+2,基础,AT+GMR,版本信息 + OK,"AT+GMR
+
+WT32-ETH01_AT_V1.1
+ESP-IDF v5.3.2
+OK
+",True,
+2,基础,AT+UART_DEF?,+UART_DEF:... + OK,"AT+UART_DEF?
++UART_DEF:115200,8,1,0,0
+OK
+",True,
+2,基础,"AT+UART_DEF=115200,8,1,0,0",OK,"AT+UART_DEF=115200,8,1,0,0
+
+OK
+",True,
+2,基础,AT+PASSCHANNEL?,+PASSCHANNEL:1~6,"AT+PASSCHANNEL?
++PASSCHANNEL:1
+OK
+",True,
+2,基础,AT+PASSCHANNEL=1,OK,"AT+PASSCHANNEL=1
+
+OK
+",True,
+2,WiFi,AT+CWMODE?,+CWMODE:0~3,"AT+CWMODE?
++CWMODE:1
+OK
+",True,
+2,WiFi,AT+CWMODE=1,OK,"AT+CWMODE=1
+
+OK
+",True,
+2,WiFi,"AT+CWJAP=""%s"",""***""",<SSID>,"AT+CWJAP=""<SSID>"",""<PASSWORD>""
+
+OK
+",True,
+2,WiFi,AT+CWJAP?,"+CWJAP:ssid,bssid,ch,rssi","AT+CWJAP?
++CWJAP:""<SSID>"",<AP_BSSID>,11,-49
+OK
+",True,
+2,以太网,AT+CWDHCP_DEF?,+CWDHCP_DEF:... + OK,"AT+CWDHCP_DEF?
++CWDHCP_DEF:3,1
+DHCP:1
+OK
+",True,
+2,以太网,"AT+CWDHCP_DEF=3,1",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+2,以太网,AT+CIPETH_DEF?,"+CIPETH_DEF:ip,gw,mask","AT+CIPETH_DEF?
++CIPETH_DEF:""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+OK
+",True,
+2,以太网,"AT+CIPETH_DEF=""192.168.2.250"",...",OK,"AT+CIPETH_DEF=""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+
+OK
+",True,
+2,以太网,"AT+CWDHCP_DEF=3,1 (恢复)",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+2,TCP/IP,AT+CIFSR,6 行 IP/MAC + OK,"AT+CIFSR
+
++CIFSR:APIP,""192.168.4.1""
++CIFSR:APMAC,""<MAC>""
++CIFSR:STAIP,""<LOCAL_IP>""
++CIFSR:STAMAC,""<MAC>""
++CIFSR:STADHCP,1,0
++CIFSR:ETHIP,""""
++CIFSR:ETHMAC,""<MAC>""
+OK
+",True,
+2,TCP/IP,"AT+CIPSTART=""TCPC"",<HOST_IP>,8888",OK,"AT+CIPSTART=""TCPC"",""<HOST_IP>"",8888
+
+OK
+",True,
+2,TCP/IP,AT+CIPSEND=5,提示符 >,"AT+CIPSEND=5
+
+> ",True,
+2,TCP/IP,发送 5 字节 (HELLO),Recv 5 bytes + SEND OK,"
+Recv 5 bytes
+SEND OK
+HELLO",True,
+2,TCP/IP,服务端收到 TCP 数据,服务端记录到连接,"[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",True,
+2,TCP/IP,AT+CIPCLOSE,CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+2,TCP/IP,"AT+CIPSTART=""UDPC"",<HOST_IP>,8889",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",8889
+
+OK
+",True,
+2,TCP/IP,发送 4 字节 (PING/UDP),Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+2,TCP/IP,服务端收到 UDP 数据,服务端记录到报文,hits=1,True,
+2,TCP/IP,AT+CIPCLOSE (UDP),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+2,TCP/IP,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999
+
+OK
+",True,
+2,TCP/IP,AT+CIPSEND=4 (回环),提示符 >,"AT+CIPSEND=4
+
+> ",True,
+2,TCP/IP,发送 4 字节并收到 SEND OK,Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+2,TCP/IP,服务端收到完整 PING 包,单个 4 字节报文,[b'PING'],True,
+2,TCP/IP,回显数据回打串口,串口收到 PING, Recv 4 bytes SEND OK PING,True,
+2,TCP/IP,AT+CIPCLOSE (回环),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+2,TCP/IP,"AT+CIPSTART=""HTPC"",...",200 OK + 正文 + OK,"AT+CIPSTART=""HTPC"",""http://<HOST_IP>:8000/test.txt""
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 22
+Connection: close
+
+WT32-ETH01-AT-TEST-OK
+
+OK
+
+CLOSED
+",True,
+2,TCP/IP,服务端收到 HTTP 请求,hits>=1,hits=1,True,
+2,TCP/IP,AT+CIPMODE?,+CIPMODE:0,"AT+CIPMODE?
++CIPMODE:0
+OK
+",True,
+2,TCP/IP,AT+CIPMODE=1,OK,"AT+CIPMODE=1
+
+OK
+",True,
+2,TCP/IP,透传数据回环,收到原样数据,,True,
+2,TCP/IP,+++ 退出透传,+++ 后 AT 应答 OK,"AT
+
+OK
+",True,
+2,TCP/IP,AT+CIPMODE=0,OK,"AT+CIPMODE=0
+
+OK
+",True,
+2,TCP/IP,AT+CIPCLOSE (透传),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+3,基础,AT,OK,"AT
+
+OK
+",True,
+3,基础,ATE0,OK,"ATE0
+
+OK
+",True,
+3,基础,AT (回显关闭),OK 且不回显,"
+OK
+",True,
+3,基础,ATE1,OK,"
+OK
+",True,
+3,基础,AT+GMR,版本信息 + OK,"AT+GMR
+
+WT32-ETH01_AT_V1.1
+ESP-IDF v5.3.2
+OK
+",True,
+3,基础,AT+UART_DEF?,+UART_DEF:... + OK,"AT+UART_DEF?
++UART_DEF:115200,8,1,0,0
+OK
+",True,
+3,基础,"AT+UART_DEF=115200,8,1,0,0",OK,"AT+UART_DEF=115200,8,1,0,0
+
+OK
+",True,
+3,基础,AT+PASSCHANNEL?,+PASSCHANNEL:1~6,"AT+PASSCHANNEL?
++PASSCHANNEL:1
+OK
+",True,
+3,基础,AT+PASSCHANNEL=1,OK,"AT+PASSCHANNEL=1
+
+OK
+",True,
+3,WiFi,AT+CWMODE?,+CWMODE:0~3,"AT+CWMODE?
++CWMODE:1
+OK
+",True,
+3,WiFi,AT+CWMODE=1,OK,"AT+CWMODE=1
+
+OK
+",True,
+3,WiFi,"AT+CWJAP=""%s"",""***""",<SSID>,"AT+CWJAP=""<SSID>"",""<PASSWORD>""
+
+OK
+",True,
+3,WiFi,AT+CWJAP?,"+CWJAP:ssid,bssid,ch,rssi","AT+CWJAP?
++CWJAP:""<SSID>"",<AP_BSSID>,11,-49
+OK
+",True,
+3,以太网,AT+CWDHCP_DEF?,+CWDHCP_DEF:... + OK,"AT+CWDHCP_DEF?
++CWDHCP_DEF:3,1
+DHCP:1
+OK
+",True,
+3,以太网,"AT+CWDHCP_DEF=3,1",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+3,以太网,AT+CIPETH_DEF?,"+CIPETH_DEF:ip,gw,mask","AT+CIPETH_DEF?
++CIPETH_DEF:""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+OK
+",True,
+3,以太网,"AT+CIPETH_DEF=""192.168.2.250"",...",OK,"AT+CIPETH_DEF=""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+
+OK
+",True,
+3,以太网,"AT+CWDHCP_DEF=3,1 (恢复)",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+3,TCP/IP,AT+CIFSR,6 行 IP/MAC + OK,"AT+CIFSR
+
++CIFSR:APIP,""192.168.4.1""
++CIFSR:APMAC,""<MAC>""
++CIFSR:STAIP,""<LOCAL_IP>""
++CIFSR:STAMAC,""<MAC>""
++CIFSR:STADHCP,1,0
++CIFSR:ETHIP,""""
++CIFSR:ETHMAC,""<MAC>""
+OK
+",True,
+3,TCP/IP,"AT+CIPSTART=""TCPC"",<HOST_IP>,8888",OK,"AT+CIPSTART=""TCPC"",""<HOST_IP>"",8888
+
+OK
+",True,
+3,TCP/IP,AT+CIPSEND=5,提示符 >,"AT+CIPSEND=5
+
+> ",True,
+3,TCP/IP,发送 5 字节 (HELLO),Recv 5 bytes + SEND OK,"
+Recv 5 bytes
+SEND OK
+HELLO",True,
+3,TCP/IP,服务端收到 TCP 数据,服务端记录到连接,"[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",True,
+3,TCP/IP,AT+CIPCLOSE,CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+3,TCP/IP,"AT+CIPSTART=""UDPC"",<HOST_IP>,8889",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",8889
+
+OK
+",True,
+3,TCP/IP,发送 4 字节 (PING/UDP),Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+3,TCP/IP,服务端收到 UDP 数据,服务端记录到报文,hits=1,True,
+3,TCP/IP,AT+CIPCLOSE (UDP),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+3,TCP/IP,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999
+
+OK
+",True,
+3,TCP/IP,AT+CIPSEND=4 (回环),提示符 >,"AT+CIPSEND=4
+
+> ",True,
+3,TCP/IP,发送 4 字节并收到 SEND OK,Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+3,TCP/IP,服务端收到完整 PING 包,单个 4 字节报文,[b'PING'],True,
+3,TCP/IP,回显数据回打串口,串口收到 PING, Recv 4 bytes SEND OK PING,True,
+3,TCP/IP,AT+CIPCLOSE (回环),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+3,TCP/IP,"AT+CIPSTART=""HTPC"",...",200 OK + 正文 + OK,"AT+CIPSTART=""HTPC"",""http://<HOST_IP>:8000/test.txt""
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 22
+Connection: close
+
+WT32-ETH01-AT-TEST-OK
+
+OK
+",True,
+3,TCP/IP,服务端收到 HTTP 请求,hits>=1,hits=1,True,
+3,TCP/IP,AT+CIPMODE?,+CIPMODE:0,"AT+CIPMODE?
++CIPMODE:0
+OK
+",True,
+3,TCP/IP,AT+CIPMODE=1,OK,"AT+CIPMODE=1
+
+OK
+",True,
+3,TCP/IP,透传数据回环,收到原样数据,,True,
+3,TCP/IP,+++ 退出透传,+++ 后 AT 应答 OK,"AT
+
+OK
+",True,
+3,TCP/IP,AT+CIPMODE=0,OK,"AT+CIPMODE=0
+
+OK
+",True,
+3,TCP/IP,AT+CIPCLOSE (透传),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+4,基础,AT,OK,"AT
+
+OK
+",True,
+4,基础,ATE0,OK,"ATE0
+
+OK
+",True,
+4,基础,AT (回显关闭),OK 且不回显,"
+OK
+",True,
+4,基础,ATE1,OK,"
+OK
+",True,
+4,基础,AT+GMR,版本信息 + OK,"AT+GMR
+
+WT32-ETH01_AT_V1.1
+ESP-IDF v5.3.2
+OK
+",True,
+4,基础,AT+UART_DEF?,+UART_DEF:... + OK,"AT+UART_DEF?
++UART_DEF:115200,8,1,0,0
+OK
+",True,
+4,基础,"AT+UART_DEF=115200,8,1,0,0",OK,"AT+UART_DEF=115200,8,1,0,0
+
+OK
+",True,
+4,基础,AT+PASSCHANNEL?,+PASSCHANNEL:1~6,"AT+PASSCHANNEL?
++PASSCHANNEL:1
+OK
+",True,
+4,基础,AT+PASSCHANNEL=1,OK,"AT+PASSCHANNEL=1
+
+OK
+",True,
+4,WiFi,AT+CWMODE?,+CWMODE:0~3,"AT+CWMODE?
++CWMODE:1
+OK
+",True,
+4,WiFi,AT+CWMODE=1,OK,"AT+CWMODE=1
+
+OK
+",True,
+4,WiFi,"AT+CWJAP=""%s"",""***""",<SSID>,"AT+CWJAP=""<SSID>"",""<PASSWORD>""
+
+OK
+",True,
+4,WiFi,AT+CWJAP?,"+CWJAP:ssid,bssid,ch,rssi","AT+CWJAP?
++CWJAP:""<SSID>"",<AP_BSSID>,11,-49
+OK
+",True,
+4,以太网,AT+CWDHCP_DEF?,+CWDHCP_DEF:... + OK,"AT+CWDHCP_DEF?
++CWDHCP_DEF:3,1
+DHCP:1
+OK
+",True,
+4,以太网,"AT+CWDHCP_DEF=3,1",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+4,以太网,AT+CIPETH_DEF?,"+CIPETH_DEF:ip,gw,mask","AT+CIPETH_DEF?
++CIPETH_DEF:""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+OK
+",True,
+4,以太网,"AT+CIPETH_DEF=""192.168.2.250"",...",OK,"AT+CIPETH_DEF=""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+
+OK
+",True,
+4,以太网,"AT+CWDHCP_DEF=3,1 (恢复)",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+4,TCP/IP,AT+CIFSR,6 行 IP/MAC + OK,"AT+CIFSR
+
++CIFSR:APIP,""192.168.4.1""
++CIFSR:APMAC,""<MAC>""
++CIFSR:STAIP,""<LOCAL_IP>""
++CIFSR:STAMAC,""<MAC>""
++CIFSR:STADHCP,1,0
++CIFSR:ETHIP,""""
++CIFSR:ETHMAC,""<MAC>""
+OK
+",True,
+4,TCP/IP,"AT+CIPSTART=""TCPC"",<HOST_IP>,8888",OK,"AT+CIPSTART=""TCPC"",""<HOST_IP>"",8888
+
+OK
+",True,
+4,TCP/IP,AT+CIPSEND=5,提示符 >,"AT+CIPSEND=5
+
+> ",True,
+4,TCP/IP,发送 5 字节 (HELLO),Recv 5 bytes + SEND OK,"
+Recv 5 bytes
+SEND OK
+HELLO",True,
+4,TCP/IP,服务端收到 TCP 数据,服务端记录到连接,"[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",True,
+4,TCP/IP,AT+CIPCLOSE,CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+4,TCP/IP,"AT+CIPSTART=""UDPC"",<HOST_IP>,8889",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",8889
+
+OK
+",True,
+4,TCP/IP,发送 4 字节 (PING/UDP),Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+4,TCP/IP,服务端收到 UDP 数据,服务端记录到报文,hits=1,True,
+4,TCP/IP,AT+CIPCLOSE (UDP),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+4,TCP/IP,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999
+
+OK
+",True,
+4,TCP/IP,AT+CIPSEND=4 (回环),提示符 >,"AT+CIPSEND=4
+
+> ",True,
+4,TCP/IP,发送 4 字节并收到 SEND OK,Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+4,TCP/IP,服务端收到完整 PING 包,单个 4 字节报文,[b'PING'],True,
+4,TCP/IP,回显数据回打串口,串口收到 PING, Recv 4 bytes SEND OK PING,True,
+4,TCP/IP,AT+CIPCLOSE (回环),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+4,TCP/IP,"AT+CIPSTART=""HTPC"",...",200 OK + 正文 + OK,"AT+CIPSTART=""HTPC"",""http://<HOST_IP>:8000/test.txt""
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 22
+Connection: close
+
+WT32-ETH01-AT-TEST-OK
+
+OK
+
+CLOSED
+",True,
+4,TCP/IP,服务端收到 HTTP 请求,hits>=1,hits=1,True,
+4,TCP/IP,AT+CIPMODE?,+CIPMODE:0,"AT+CIPMODE?
++CIPMODE:0
+OK
+",True,
+4,TCP/IP,AT+CIPMODE=1,OK,"AT+CIPMODE=1
+
+OK
+",True,
+4,TCP/IP,透传数据回环,收到原样数据,,True,
+4,TCP/IP,+++ 退出透传,+++ 后 AT 应答 OK,"AT
+
+OK
+",True,
+4,TCP/IP,AT+CIPMODE=0,OK,"AT+CIPMODE=0
+
+OK
+",True,
+4,TCP/IP,AT+CIPCLOSE (透传),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+5,基础,AT,OK,"AT
+
+OK
+",True,
+5,基础,ATE0,OK,"ATE0
+
+OK
+",True,
+5,基础,AT (回显关闭),OK 且不回显,"
+OK
+",True,
+5,基础,ATE1,OK,"
+OK
+",True,
+5,基础,AT+GMR,版本信息 + OK,"AT+GMR
+
+WT32-ETH01_AT_V1.1
+ESP-IDF v5.3.2
+OK
+",True,
+5,基础,AT+UART_DEF?,+UART_DEF:... + OK,"AT+UART_DEF?
++UART_DEF:115200,8,1,0,0
+OK
+",True,
+5,基础,"AT+UART_DEF=115200,8,1,0,0",OK,"AT+UART_DEF=115200,8,1,0,0
+
+OK
+",True,
+5,基础,AT+PASSCHANNEL?,+PASSCHANNEL:1~6,"AT+PASSCHANNEL?
++PASSCHANNEL:1
+OK
+",True,
+5,基础,AT+PASSCHANNEL=1,OK,"AT+PASSCHANNEL=1
+
+OK
+",True,
+5,WiFi,AT+CWMODE?,+CWMODE:0~3,"AT+CWMODE?
++CWMODE:1
+OK
+",True,
+5,WiFi,AT+CWMODE=1,OK,"AT+CWMODE=1
+
+OK
+",True,
+5,WiFi,"AT+CWJAP=""%s"",""***""",<SSID>,"AT+CWJAP=""<SSID>"",""<PASSWORD>""
+
+OK
+",True,
+5,WiFi,AT+CWJAP?,"+CWJAP:ssid,bssid,ch,rssi","AT+CWJAP?
++CWJAP:""<SSID>"",<AP_BSSID>,11,-50
+OK
+",True,
+5,以太网,AT+CWDHCP_DEF?,+CWDHCP_DEF:... + OK,"AT+CWDHCP_DEF?
++CWDHCP_DEF:3,1
+DHCP:1
+OK
+",True,
+5,以太网,"AT+CWDHCP_DEF=3,1",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+5,以太网,AT+CIPETH_DEF?,"+CIPETH_DEF:ip,gw,mask","AT+CIPETH_DEF?
++CIPETH_DEF:""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+OK
+",True,
+5,以太网,"AT+CIPETH_DEF=""192.168.2.250"",...",OK,"AT+CIPETH_DEF=""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+
+OK
+",True,
+5,以太网,"AT+CWDHCP_DEF=3,1 (恢复)",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+5,TCP/IP,AT+CIFSR,6 行 IP/MAC + OK,"AT+CIFSR
+
++CIFSR:APIP,""192.168.4.1""
++CIFSR:APMAC,""<MAC>""
++CIFSR:STAIP,""<LOCAL_IP>""
++CIFSR:STAMAC,""<MAC>""
++CIFSR:STADHCP,1,0
++CIFSR:ETHIP,""""
++CIFSR:ETHMAC,""<MAC>""
+OK
+",True,
+5,TCP/IP,"AT+CIPSTART=""TCPC"",<HOST_IP>,8888",OK,"AT+CIPSTART=""TCPC"",""<HOST_IP>"",8888
+
+OK
+",True,
+5,TCP/IP,AT+CIPSEND=5,提示符 >,"AT+CIPSEND=5
+
+> ",True,
+5,TCP/IP,发送 5 字节 (HELLO),Recv 5 bytes + SEND OK,"
+Recv 5 bytes
+SEND OK
+HELLO",True,
+5,TCP/IP,服务端收到 TCP 数据,服务端记录到连接,"[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",True,
+5,TCP/IP,AT+CIPCLOSE,CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+5,TCP/IP,"AT+CIPSTART=""UDPC"",<HOST_IP>,8889",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",8889
+
+OK
+",True,
+5,TCP/IP,发送 4 字节 (PING/UDP),Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+5,TCP/IP,服务端收到 UDP 数据,服务端记录到报文,hits=1,True,
+5,TCP/IP,AT+CIPCLOSE (UDP),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+5,TCP/IP,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999
+
+OK
+",True,
+5,TCP/IP,AT+CIPSEND=4 (回环),提示符 >,"AT+CIPSEND=4
+
+> ",True,
+5,TCP/IP,发送 4 字节并收到 SEND OK,Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+5,TCP/IP,服务端收到完整 PING 包,单个 4 字节报文,[b'PING'],True,
+5,TCP/IP,回显数据回打串口,串口收到 PING, Recv 4 bytes SEND OK PING,True,
+5,TCP/IP,AT+CIPCLOSE (回环),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+5,TCP/IP,"AT+CIPSTART=""HTPC"",...",200 OK + 正文 + OK,"AT+CIPSTART=""HTPC"",""http://<HOST_IP>:8000/test.txt""
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 22
+Connection: close
+
+WT32-ETH01-AT-TEST-OK
+
+OK
+",True,
+5,TCP/IP,服务端收到 HTTP 请求,hits>=1,hits=1,True,
+5,TCP/IP,AT+CIPMODE?,+CIPMODE:0,"AT+CIPMODE?
++CIPMODE:0
+OK
+",True,
+5,TCP/IP,AT+CIPMODE=1,OK,"AT+CIPMODE=1
+
+OK
+",True,
+5,TCP/IP,透传数据回环,收到原样数据,,True,
+5,TCP/IP,+++ 退出透传,+++ 后 AT 应答 OK,"AT
+
+OK
+",True,
+5,TCP/IP,AT+CIPMODE=0,OK,"AT+CIPMODE=0
+
+OK
+",True,
+5,TCP/IP,AT+CIPCLOSE (透传),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+6,基础,AT,OK,"AT
+
+OK
+",True,
+6,基础,ATE0,OK,"ATE0
+
+OK
+",True,
+6,基础,AT (回显关闭),OK 且不回显,"
+OK
+",True,
+6,基础,ATE1,OK,"
+OK
+",True,
+6,基础,AT+GMR,版本信息 + OK,"AT+GMR
+
+WT32-ETH01_AT_V1.1
+ESP-IDF v5.3.2
+OK
+",True,
+6,基础,AT+UART_DEF?,+UART_DEF:... + OK,"AT+UART_DEF?
++UART_DEF:115200,8,1,0,0
+OK
+",True,
+6,基础,"AT+UART_DEF=115200,8,1,0,0",OK,"AT+UART_DEF=115200,8,1,0,0
+
+OK
+",True,
+6,基础,AT+PASSCHANNEL?,+PASSCHANNEL:1~6,"AT+PASSCHANNEL?
++PASSCHANNEL:1
+OK
+",True,
+6,基础,AT+PASSCHANNEL=1,OK,"AT+PASSCHANNEL=1
+
+OK
+",True,
+6,WiFi,AT+CWMODE?,+CWMODE:0~3,"AT+CWMODE?
++CWMODE:1
+OK
+",True,
+6,WiFi,AT+CWMODE=1,OK,"AT+CWMODE=1
+
+OK
+",True,
+6,WiFi,"AT+CWJAP=""%s"",""***""",<SSID>,"AT+CWJAP=""<SSID>"",""<PASSWORD>""
+
+OK
+",True,
+6,WiFi,AT+CWJAP?,"+CWJAP:ssid,bssid,ch,rssi","AT+CWJAP?
++CWJAP:""<SSID>"",<AP_BSSID>,11,-50
+OK
+",True,
+6,以太网,AT+CWDHCP_DEF?,+CWDHCP_DEF:... + OK,"AT+CWDHCP_DEF?
++CWDHCP_DEF:3,1
+DHCP:1
+OK
+",True,
+6,以太网,"AT+CWDHCP_DEF=3,1",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+6,以太网,AT+CIPETH_DEF?,"+CIPETH_DEF:ip,gw,mask","AT+CIPETH_DEF?
++CIPETH_DEF:""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+OK
+",True,
+6,以太网,"AT+CIPETH_DEF=""192.168.2.250"",...",OK,"AT+CIPETH_DEF=""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+
+OK
+",True,
+6,以太网,"AT+CWDHCP_DEF=3,1 (恢复)",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+6,TCP/IP,AT+CIFSR,6 行 IP/MAC + OK,"AT+CIFSR
+
++CIFSR:APIP,""192.168.4.1""
++CIFSR:APMAC,""<MAC>""
++CIFSR:STAIP,""<LOCAL_IP>""
++CIFSR:STAMAC,""<MAC>""
++CIFSR:STADHCP,1,0
++CIFSR:ETHIP,""""
++CIFSR:ETHMAC,""<MAC>""
+OK
+",True,
+6,TCP/IP,"AT+CIPSTART=""TCPC"",<HOST_IP>,8888",OK,"AT+CIPSTART=""TCPC"",""<HOST_IP>"",8888
+
+OK
+",True,
+6,TCP/IP,AT+CIPSEND=5,提示符 >,"AT+CIPSEND=5
+
+> ",True,
+6,TCP/IP,发送 5 字节 (HELLO),Recv 5 bytes + SEND OK,"
+Recv 5 bytes
+SEND OK
+HELLO",True,
+6,TCP/IP,服务端收到 TCP 数据,服务端记录到连接,"[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",True,
+6,TCP/IP,AT+CIPCLOSE,CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+6,TCP/IP,"AT+CIPSTART=""UDPC"",<HOST_IP>,8889",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",8889
+
+OK
+",True,
+6,TCP/IP,发送 4 字节 (PING/UDP),Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+6,TCP/IP,服务端收到 UDP 数据,服务端记录到报文,hits=1,True,
+6,TCP/IP,AT+CIPCLOSE (UDP),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+6,TCP/IP,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999
+
+OK
+",True,
+6,TCP/IP,AT+CIPSEND=4 (回环),提示符 >,"AT+CIPSEND=4
+
+> ",True,
+6,TCP/IP,发送 4 字节并收到 SEND OK,Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+6,TCP/IP,服务端收到完整 PING 包,单个 4 字节报文,[b'PING'],True,
+6,TCP/IP,回显数据回打串口,串口收到 PING, Recv 4 bytes SEND OK PING,True,
+6,TCP/IP,AT+CIPCLOSE (回环),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+6,TCP/IP,"AT+CIPSTART=""HTPC"",...",200 OK + 正文 + OK,"AT+CIPSTART=""HTPC"",""http://<HOST_IP>:8000/test.txt""
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 22
+Connection: close
+
+WT32-ETH01-AT-TEST-OK
+
+OK
+
+CLOSED
+",True,
+6,TCP/IP,服务端收到 HTTP 请求,hits>=1,hits=1,True,
+6,TCP/IP,AT+CIPMODE?,+CIPMODE:0,"AT+CIPMODE?
++CIPMODE:0
+OK
+",True,
+6,TCP/IP,AT+CIPMODE=1,OK,"AT+CIPMODE=1
+
+OK
+",True,
+6,TCP/IP,透传数据回环,收到原样数据,,True,
+6,TCP/IP,+++ 退出透传,+++ 后 AT 应答 OK,"AT
+
+OK
+",True,
+6,TCP/IP,AT+CIPMODE=0,OK,"AT+CIPMODE=0
+
+OK
+",True,
+6,TCP/IP,AT+CIPCLOSE (透传),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+7,基础,AT,OK,"AT
+
+OK
+",True,
+7,基础,ATE0,OK,"ATE0
+
+OK
+",True,
+7,基础,AT (回显关闭),OK 且不回显,"
+OK
+",True,
+7,基础,ATE1,OK,"
+OK
+",True,
+7,基础,AT+GMR,版本信息 + OK,"AT+GMR
+
+WT32-ETH01_AT_V1.1
+ESP-IDF v5.3.2
+OK
+",True,
+7,基础,AT+UART_DEF?,+UART_DEF:... + OK,"AT+UART_DEF?
++UART_DEF:115200,8,1,0,0
+OK
+",True,
+7,基础,"AT+UART_DEF=115200,8,1,0,0",OK,"AT+UART_DEF=115200,8,1,0,0
+
+OK
+",True,
+7,基础,AT+PASSCHANNEL?,+PASSCHANNEL:1~6,"AT+PASSCHANNEL?
++PASSCHANNEL:1
+OK
+",True,
+7,基础,AT+PASSCHANNEL=1,OK,"AT+PASSCHANNEL=1
+
+OK
+",True,
+7,WiFi,AT+CWMODE?,+CWMODE:0~3,"AT+CWMODE?
++CWMODE:1
+OK
+",True,
+7,WiFi,AT+CWMODE=1,OK,"AT+CWMODE=1
+
+OK
+",True,
+7,WiFi,"AT+CWJAP=""%s"",""***""",<SSID>,"AT+CWJAP=""<SSID>"",""<PASSWORD>""
+
+OK
+",True,
+7,WiFi,AT+CWJAP?,"+CWJAP:ssid,bssid,ch,rssi","AT+CWJAP?
++CWJAP:""<SSID>"",<AP_BSSID>,11,-51
+OK
+",True,
+7,以太网,AT+CWDHCP_DEF?,+CWDHCP_DEF:... + OK,"AT+CWDHCP_DEF?
++CWDHCP_DEF:3,1
+DHCP:1
+OK
+",True,
+7,以太网,"AT+CWDHCP_DEF=3,1",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+7,以太网,AT+CIPETH_DEF?,"+CIPETH_DEF:ip,gw,mask","AT+CIPETH_DEF?
++CIPETH_DEF:""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+OK
+",True,
+7,以太网,"AT+CIPETH_DEF=""192.168.2.250"",...",OK,"AT+CIPETH_DEF=""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+
+OK
+",True,
+7,以太网,"AT+CWDHCP_DEF=3,1 (恢复)",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+7,TCP/IP,AT+CIFSR,6 行 IP/MAC + OK,"AT+CIFSR
+
++CIFSR:APIP,""192.168.4.1""
++CIFSR:APMAC,""<MAC>""
++CIFSR:STAIP,""<LOCAL_IP>""
++CIFSR:STAMAC,""<MAC>""
++CIFSR:STADHCP,1,0
++CIFSR:ETHIP,""""
++CIFSR:ETHMAC,""<MAC>""
+OK
+",True,
+7,TCP/IP,"AT+CIPSTART=""TCPC"",<HOST_IP>,8888",OK,"AT+CIPSTART=""TCPC"",""<HOST_IP>"",8888
+
+OK
+",True,
+7,TCP/IP,AT+CIPSEND=5,提示符 >,"AT+CIPSEND=5
+
+> ",True,
+7,TCP/IP,发送 5 字节 (HELLO),Recv 5 bytes + SEND OK,"
+Recv 5 bytes
+SEND OK
+HELLO",True,
+7,TCP/IP,服务端收到 TCP 数据,服务端记录到连接,"[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",True,
+7,TCP/IP,AT+CIPCLOSE,CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+7,TCP/IP,"AT+CIPSTART=""UDPC"",<HOST_IP>,8889",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",8889
+
+OK
+",True,
+7,TCP/IP,发送 4 字节 (PING/UDP),Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+7,TCP/IP,服务端收到 UDP 数据,服务端记录到报文,hits=1,True,
+7,TCP/IP,AT+CIPCLOSE (UDP),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+7,TCP/IP,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999
+
+OK
+",True,
+7,TCP/IP,AT+CIPSEND=4 (回环),提示符 >,"AT+CIPSEND=4
+
+> ",True,
+7,TCP/IP,发送 4 字节并收到 SEND OK,Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+7,TCP/IP,服务端收到完整 PING 包,单个 4 字节报文,[b'PING'],True,
+7,TCP/IP,回显数据回打串口,串口收到 PING, Recv 4 bytes SEND OK PING,True,
+7,TCP/IP,AT+CIPCLOSE (回环),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+7,TCP/IP,"AT+CIPSTART=""HTPC"",...",200 OK + 正文 + OK,"AT+CIPSTART=""HTPC"",""http://<HOST_IP>:8000/test.txt""
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 22
+Connection: close
+
+WT32-ETH01-AT-TEST-OK
+
+OK
+
+CLOSED
+",True,
+7,TCP/IP,服务端收到 HTTP 请求,hits>=1,hits=1,True,
+7,TCP/IP,AT+CIPMODE?,+CIPMODE:0,"AT+CIPMODE?
++CIPMODE:0
+OK
+",True,
+7,TCP/IP,AT+CIPMODE=1,OK,"AT+CIPMODE=1
+
+OK
+",True,
+7,TCP/IP,透传数据回环,收到原样数据,,True,
+7,TCP/IP,+++ 退出透传,+++ 后 AT 应答 OK,"AT
+
+OK
+",True,
+7,TCP/IP,AT+CIPMODE=0,OK,"AT+CIPMODE=0
+
+OK
+",True,
+7,TCP/IP,AT+CIPCLOSE (透传),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+8,基础,AT,OK,"AT
+
+OK
+",True,
+8,基础,ATE0,OK,"ATE0
+
+OK
+",True,
+8,基础,AT (回显关闭),OK 且不回显,"
+OK
+",True,
+8,基础,ATE1,OK,"
+OK
+",True,
+8,基础,AT+GMR,版本信息 + OK,"AT+GMR
+
+WT32-ETH01_AT_V1.1
+ESP-IDF v5.3.2
+OK
+",True,
+8,基础,AT+UART_DEF?,+UART_DEF:... + OK,"AT+UART_DEF?
++UART_DEF:115200,8,1,0,0
+OK
+",True,
+8,基础,"AT+UART_DEF=115200,8,1,0,0",OK,"AT+UART_DEF=115200,8,1,0,0
+
+OK
+",True,
+8,基础,AT+PASSCHANNEL?,+PASSCHANNEL:1~6,"AT+PASSCHANNEL?
++PASSCHANNEL:1
+OK
+",True,
+8,基础,AT+PASSCHANNEL=1,OK,"AT+PASSCHANNEL=1
+
+OK
+",True,
+8,WiFi,AT+CWMODE?,+CWMODE:0~3,"AT+CWMODE?
++CWMODE:1
+OK
+",True,
+8,WiFi,AT+CWMODE=1,OK,"AT+CWMODE=1
+
+OK
+",True,
+8,WiFi,"AT+CWJAP=""%s"",""***""",<SSID>,"AT+CWJAP=""<SSID>"",""<PASSWORD>""
+
+OK
+",True,
+8,WiFi,AT+CWJAP?,"+CWJAP:ssid,bssid,ch,rssi","AT+CWJAP?
++CWJAP:""<SSID>"",<AP_BSSID>,11,-50
+OK
+",True,
+8,以太网,AT+CWDHCP_DEF?,+CWDHCP_DEF:... + OK,"AT+CWDHCP_DEF?
++CWDHCP_DEF:3,1
+DHCP:1
+OK
+",True,
+8,以太网,"AT+CWDHCP_DEF=3,1",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+8,以太网,AT+CIPETH_DEF?,"+CIPETH_DEF:ip,gw,mask","AT+CIPETH_DEF?
++CIPETH_DEF:""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+OK
+",True,
+8,以太网,"AT+CIPETH_DEF=""192.168.2.250"",...",OK,"AT+CIPETH_DEF=""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+
+OK
+",True,
+8,以太网,"AT+CWDHCP_DEF=3,1 (恢复)",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+8,TCP/IP,AT+CIFSR,6 行 IP/MAC + OK,"AT+CIFSR
+
++CIFSR:APIP,""192.168.4.1""
++CIFSR:APMAC,""<MAC>""
++CIFSR:STAIP,""<LOCAL_IP>""
++CIFSR:STAMAC,""<MAC>""
++CIFSR:STADHCP,1,0
++CIFSR:ETHIP,""""
++CIFSR:ETHMAC,""<MAC>""
+OK
+",True,
+8,TCP/IP,"AT+CIPSTART=""TCPC"",<HOST_IP>,8888",OK,"AT+CIPSTART=""TCPC"",""<HOST_IP>"",8888
+
+OK
+",True,
+8,TCP/IP,AT+CIPSEND=5,提示符 >,"AT+CIPSEND=5
+
+> ",True,
+8,TCP/IP,发送 5 字节 (HELLO),Recv 5 bytes + SEND OK,"
+Recv 5 bytes
+SEND OK
+HELLO",True,
+8,TCP/IP,服务端收到 TCP 数据,服务端记录到连接,"[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",True,
+8,TCP/IP,AT+CIPCLOSE,CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+8,TCP/IP,"AT+CIPSTART=""UDPC"",<HOST_IP>,8889",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",8889
+
+OK
+",True,
+8,TCP/IP,发送 4 字节 (PING/UDP),Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+8,TCP/IP,服务端收到 UDP 数据,服务端记录到报文,hits=1,True,
+8,TCP/IP,AT+CIPCLOSE (UDP),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+8,TCP/IP,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999
+
+OK
+",True,
+8,TCP/IP,AT+CIPSEND=4 (回环),提示符 >,"AT+CIPSEND=4
+
+> ",True,
+8,TCP/IP,发送 4 字节并收到 SEND OK,Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+8,TCP/IP,服务端收到完整 PING 包,单个 4 字节报文,[b'PING'],True,
+8,TCP/IP,回显数据回打串口,串口收到 PING, Recv 4 bytes SEND OK PING,True,
+8,TCP/IP,AT+CIPCLOSE (回环),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+8,TCP/IP,"AT+CIPSTART=""HTPC"",...",200 OK + 正文 + OK,"AT+CIPSTART=""HTPC"",""http://<HOST_IP>:8000/test.txt""
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 22
+Connection: close
+
+WT32-ETH01-AT-TEST-OK
+
+OK
+",True,
+8,TCP/IP,服务端收到 HTTP 请求,hits>=1,hits=1,True,
+8,TCP/IP,AT+CIPMODE?,+CIPMODE:0,"AT+CIPMODE?
++CIPMODE:0
+OK
+",True,
+8,TCP/IP,AT+CIPMODE=1,OK,"AT+CIPMODE=1
+
+OK
+",True,
+8,TCP/IP,透传数据回环,收到原样数据,,True,
+8,TCP/IP,+++ 退出透传,+++ 后 AT 应答 OK,"AT
+
+OK
+",True,
+8,TCP/IP,AT+CIPMODE=0,OK,"AT+CIPMODE=0
+
+OK
+",True,
+8,TCP/IP,AT+CIPCLOSE (透传),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+9,基础,AT,OK,"AT
+
+OK
+",True,
+9,基础,ATE0,OK,"ATE0
+
+OK
+",True,
+9,基础,AT (回显关闭),OK 且不回显,"
+OK
+",True,
+9,基础,ATE1,OK,"
+OK
+",True,
+9,基础,AT+GMR,版本信息 + OK,"AT+GMR
+
+WT32-ETH01_AT_V1.1
+ESP-IDF v5.3.2
+OK
+",True,
+9,基础,AT+UART_DEF?,+UART_DEF:... + OK,"AT+UART_DEF?
++UART_DEF:115200,8,1,0,0
+OK
+",True,
+9,基础,"AT+UART_DEF=115200,8,1,0,0",OK,"AT+UART_DEF=115200,8,1,0,0
+
+OK
+",True,
+9,基础,AT+PASSCHANNEL?,+PASSCHANNEL:1~6,"AT+PASSCHANNEL?
++PASSCHANNEL:1
+OK
+",True,
+9,基础,AT+PASSCHANNEL=1,OK,"AT+PASSCHANNEL=1
+
+OK
+",True,
+9,WiFi,AT+CWMODE?,+CWMODE:0~3,"AT+CWMODE?
++CWMODE:1
+OK
+",True,
+9,WiFi,AT+CWMODE=1,OK,"AT+CWMODE=1
+
+OK
+",True,
+9,WiFi,"AT+CWJAP=""%s"",""***""",<SSID>,"AT+CWJAP=""<SSID>"",""<PASSWORD>""
+
+OK
+",True,
+9,WiFi,AT+CWJAP?,"+CWJAP:ssid,bssid,ch,rssi","AT+CWJAP?
++CWJAP:""<SSID>"",<AP_BSSID>,11,-48
+OK
+",True,
+9,以太网,AT+CWDHCP_DEF?,+CWDHCP_DEF:... + OK,"AT+CWDHCP_DEF?
++CWDHCP_DEF:3,1
+DHCP:1
+OK
+",True,
+9,以太网,"AT+CWDHCP_DEF=3,1",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+9,以太网,AT+CIPETH_DEF?,"+CIPETH_DEF:ip,gw,mask","AT+CIPETH_DEF?
++CIPETH_DEF:""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+OK
+",True,
+9,以太网,"AT+CIPETH_DEF=""192.168.2.250"",...",OK,"AT+CIPETH_DEF=""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+
+OK
+",True,
+9,以太网,"AT+CWDHCP_DEF=3,1 (恢复)",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+9,TCP/IP,AT+CIFSR,6 行 IP/MAC + OK,"AT+CIFSR
+
++CIFSR:APIP,""192.168.4.1""
++CIFSR:APMAC,""<MAC>""
++CIFSR:STAIP,""<LOCAL_IP>""
++CIFSR:STAMAC,""<MAC>""
++CIFSR:STADHCP,1,0
++CIFSR:ETHIP,""""
++CIFSR:ETHMAC,""<MAC>""
+OK
+",True,
+9,TCP/IP,"AT+CIPSTART=""TCPC"",<HOST_IP>,8888",OK,"AT+CIPSTART=""TCPC"",""<HOST_IP>"",8888
+
+OK
+",True,
+9,TCP/IP,AT+CIPSEND=5,提示符 >,"AT+CIPSEND=5
+
+> ",True,
+9,TCP/IP,发送 5 字节 (HELLO),Recv 5 bytes + SEND OK,"
+Recv 5 bytes
+SEND OK
+HELLO",True,
+9,TCP/IP,服务端收到 TCP 数据,服务端记录到连接,"[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",True,
+9,TCP/IP,AT+CIPCLOSE,CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+9,TCP/IP,"AT+CIPSTART=""UDPC"",<HOST_IP>,8889",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",8889
+
+OK
+",True,
+9,TCP/IP,发送 4 字节 (PING/UDP),Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+9,TCP/IP,服务端收到 UDP 数据,服务端记录到报文,hits=1,True,
+9,TCP/IP,AT+CIPCLOSE (UDP),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+9,TCP/IP,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999
+
+OK
+",True,
+9,TCP/IP,AT+CIPSEND=4 (回环),提示符 >,"AT+CIPSEND=4
+
+> ",True,
+9,TCP/IP,发送 4 字节并收到 SEND OK,Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+9,TCP/IP,服务端收到完整 PING 包,单个 4 字节报文,[b'PING'],True,
+9,TCP/IP,回显数据回打串口,串口收到 PING, Recv 4 bytes SEND OK PING,True,
+9,TCP/IP,AT+CIPCLOSE (回环),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+9,TCP/IP,"AT+CIPSTART=""HTPC"",...",200 OK + 正文 + OK,"AT+CIPSTART=""HTPC"",""http://<HOST_IP>:8000/test.txt""
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 22
+Connection: close
+
+WT32-ETH01-AT-TEST-OK
+
+OK
+",True,
+9,TCP/IP,服务端收到 HTTP 请求,hits>=1,hits=1,True,
+9,TCP/IP,AT+CIPMODE?,+CIPMODE:0,"AT+CIPMODE?
++CIPMODE:0
+OK
+",True,
+9,TCP/IP,AT+CIPMODE=1,OK,"AT+CIPMODE=1
+
+OK
+",True,
+9,TCP/IP,透传数据回环,收到原样数据,,True,
+9,TCP/IP,+++ 退出透传,+++ 后 AT 应答 OK,"AT
+
+OK
+",True,
+9,TCP/IP,AT+CIPMODE=0,OK,"AT+CIPMODE=0
+
+OK
+",True,
+9,TCP/IP,AT+CIPCLOSE (透传),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+10,基础,AT,OK,"AT
+
+OK
+",True,
+10,基础,ATE0,OK,"ATE0
+
+OK
+",True,
+10,基础,AT (回显关闭),OK 且不回显,"
+OK
+",True,
+10,基础,ATE1,OK,"
+OK
+",True,
+10,基础,AT+GMR,版本信息 + OK,"AT+GMR
+
+WT32-ETH01_AT_V1.1
+ESP-IDF v5.3.2
+OK
+",True,
+10,基础,AT+UART_DEF?,+UART_DEF:... + OK,"AT+UART_DEF?
++UART_DEF:115200,8,1,0,0
+OK
+",True,
+10,基础,"AT+UART_DEF=115200,8,1,0,0",OK,"AT+UART_DEF=115200,8,1,0,0
+
+OK
+",True,
+10,基础,AT+PASSCHANNEL?,+PASSCHANNEL:1~6,"AT+PASSCHANNEL?
++PASSCHANNEL:1
+OK
+",True,
+10,基础,AT+PASSCHANNEL=1,OK,"AT+PASSCHANNEL=1
+
+OK
+",True,
+10,WiFi,AT+CWMODE?,+CWMODE:0~3,"AT+CWMODE?
++CWMODE:1
+OK
+",True,
+10,WiFi,AT+CWMODE=1,OK,"AT+CWMODE=1
+
+OK
+",True,
+10,WiFi,"AT+CWJAP=""%s"",""***""",<SSID>,"AT+CWJAP=""<SSID>"",""<PASSWORD>""
+
+OK
+",True,
+10,WiFi,AT+CWJAP?,"+CWJAP:ssid,bssid,ch,rssi","AT+CWJAP?
++CWJAP:""<SSID>"",<AP_BSSID>,11,-50
+OK
+",True,
+10,以太网,AT+CWDHCP_DEF?,+CWDHCP_DEF:... + OK,"AT+CWDHCP_DEF?
++CWDHCP_DEF:3,1
+DHCP:1
+OK
+",True,
+10,以太网,"AT+CWDHCP_DEF=3,1",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+10,以太网,AT+CIPETH_DEF?,"+CIPETH_DEF:ip,gw,mask","AT+CIPETH_DEF?
++CIPETH_DEF:""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+OK
+",True,
+10,以太网,"AT+CIPETH_DEF=""192.168.2.250"",...",OK,"AT+CIPETH_DEF=""192.168.2.250"",""192.168.2.1"",""255.255.255.0""
+
+OK
+",True,
+10,以太网,"AT+CWDHCP_DEF=3,1 (恢复)",OK,"AT+CWDHCP_DEF=3,1
+
+OK
+",True,
+10,TCP/IP,AT+CIFSR,6 行 IP/MAC + OK,"AT+CIFSR
+
++CIFSR:APIP,""192.168.4.1""
++CIFSR:APMAC,""<MAC>""
++CIFSR:STAIP,""<LOCAL_IP>""
++CIFSR:STAMAC,""<MAC>""
++CIFSR:STADHCP,1,0
++CIFSR:ETHIP,""""
++CIFSR:ETHMAC,""<MAC>""
+OK
+",True,
+10,TCP/IP,"AT+CIPSTART=""TCPC"",<HOST_IP>,8888",OK,"AT+CIPSTART=""TCPC"",""<HOST_IP>"",8888
+
+OK
+",True,
+10,TCP/IP,AT+CIPSEND=5,提示符 >,"AT+CIPSEND=5
+
+> ",True,
+10,TCP/IP,发送 5 字节 (HELLO),Recv 5 bytes + SEND OK,"
+Recv 5 bytes
+SEND OK
+HELLO",True,
+10,TCP/IP,服务端收到 TCP 数据,服务端记录到连接,"[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",True,
+10,TCP/IP,AT+CIPCLOSE,CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+10,TCP/IP,"AT+CIPSTART=""UDPC"",<HOST_IP>,8889",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",8889
+
+OK
+",True,
+10,TCP/IP,发送 4 字节 (PING/UDP),Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+10,TCP/IP,服务端收到 UDP 数据,服务端记录到报文,hits=1,True,
+10,TCP/IP,AT+CIPCLOSE (UDP),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+10,TCP/IP,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999",OK,"AT+CIPSTART=""UDPC"",""<HOST_IP>"",9999
+
+OK
+",True,
+10,TCP/IP,AT+CIPSEND=4 (回环),提示符 >,"AT+CIPSEND=4
+
+> ",True,
+10,TCP/IP,发送 4 字节并收到 SEND OK,Recv 4 bytes + SEND OK,"
+Recv 4 bytes
+SEND OK
+PING",True,
+10,TCP/IP,服务端收到完整 PING 包,单个 4 字节报文,[b'PING'],True,
+10,TCP/IP,回显数据回打串口,串口收到 PING, Recv 4 bytes SEND OK PING,True,
+10,TCP/IP,AT+CIPCLOSE (回环),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,
+10,TCP/IP,"AT+CIPSTART=""HTPC"",...",200 OK + 正文 + OK,"AT+CIPSTART=""HTPC"",""http://<HOST_IP>:8000/test.txt""
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 22
+Connection: close
+
+WT32-ETH01-AT-TEST-OK
+
+OK
+",True,
+10,TCP/IP,服务端收到 HTTP 请求,hits>=1,hits=1,True,
+10,TCP/IP,AT+CIPMODE?,+CIPMODE:0,"AT+CIPMODE?
++CIPMODE:0
+OK
+",True,
+10,TCP/IP,AT+CIPMODE=1,OK,"AT+CIPMODE=1
+
+OK
+",True,
+10,TCP/IP,透传数据回环,收到原样数据,,True,
+10,TCP/IP,+++ 退出透传,+++ 后 AT 应答 OK,"AT
+
+OK
+",True,
+10,TCP/IP,AT+CIPMODE=0,OK,"AT+CIPMODE=0
+
+OK
+",True,
+10,TCP/IP,AT+CIPCLOSE (透传),CLOSED + OK,"AT+CIPCLOSE
+
+CLOSED
+
+OK
+",True,

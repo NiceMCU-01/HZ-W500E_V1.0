@@ -1,0 +1,47 @@
+# ---- 构建产物 ----
+build/
+build_out/
+sdkconfig
+sdkconfig.old
+*.bin
+*.elf
+*.map
+*.lst
+managed_components/
+dependencies.lock
+
+# ---- 工具链 / 缓存（本机目录，体积大且与仓库无关）----
+esp-idf/
+idf-tools/
+pyenv/
+cache/
+logs/
+original/
+notes/
+
+# ---- Python ----
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ---- 测试原始产物（未脱敏，禁止提交）----
+test/at_test_report.json
+test/at_test_report.csv
+test/AT指令测试报告.html
+test/*.log
+
+# ---- 可能含凭据的本地配置 ----
+.env
+.env.*
+!.env.example
+test/local_config.py
+*.local.*
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+.DS_Store
+desktop.ini

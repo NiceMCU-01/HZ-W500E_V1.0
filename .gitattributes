@@ -1,0 +1,9 @@
+# 默认按文本处理，提交时统一为 LF，避免跨平台 diff 噪声
+* text=auto eol=lf
+
+# 二进制资源不做换行转换
+*.bin binary
+*.elf binary
+*.png binary
+*.jpg binary
+*.gz binary

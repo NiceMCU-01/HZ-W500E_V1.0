@@ -1,0 +1,3787 @@
+{
+ "total": 420,
+ "passed": 420,
+ "host": "<HOST_IP>",
+ "rows": [
+  {
+   "round": 1,
+   "group": "基础",
+   "cmd": "AT",
+   "expect": "OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "基础",
+   "cmd": "ATE0",
+   "expect": "OK",
+   "got": "ATE0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "基础",
+   "cmd": "AT (回显关闭)",
+   "expect": "OK 且不回显",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "基础",
+   "cmd": "ATE1",
+   "expect": "OK",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "基础",
+   "cmd": "AT+GMR",
+   "expect": "版本信息 + OK",
+   "got": "AT+GMR\r\n\r\nWT32-ETH01_AT_V1.1\r\nESP-IDF v5.3.2\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "基础",
+   "cmd": "AT+UART_DEF?",
+   "expect": "+UART_DEF:... + OK",
+   "got": "AT+UART_DEF?\r\n+UART_DEF:115200,8,1,0,0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "基础",
+   "cmd": "AT+UART_DEF=115200,8,1,0,0",
+   "expect": "OK",
+   "got": "AT+UART_DEF=115200,8,1,0,0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL?",
+   "expect": "+PASSCHANNEL:1~6",
+   "got": "AT+PASSCHANNEL?\r\n+PASSCHANNEL:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL=1",
+   "expect": "OK",
+   "got": "AT+PASSCHANNEL=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE?",
+   "expect": "+CWMODE:0~3",
+   "got": "AT+CWMODE?\r\n+CWMODE:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE=1",
+   "expect": "OK",
+   "got": "AT+CWMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP=\"%s\",\"***\"",
+   "expect": "<SSID>",
+   "got": "AT+CWJAP=\"<SSID>\",\"<PASSWORD>\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP?",
+   "expect": "+CWJAP:ssid,bssid,ch,rssi",
+   "got": "AT+CWJAP?\r\n+CWJAP:\"<SSID>\",<AP_BSSID>,11,-50\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF?",
+   "expect": "+CWDHCP_DEF:... + OK",
+   "got": "AT+CWDHCP_DEF?\r\n+CWDHCP_DEF:3,1\r\nDHCP:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF?",
+   "expect": "+CIPETH_DEF:ip,gw,mask",
+   "got": "AT+CIPETH_DEF?\r\n+CIPETH_DEF:\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF=\"192.168.2.250\",...",
+   "expect": "OK",
+   "got": "AT+CIPETH_DEF=\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1 (恢复)",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "AT+CIFSR",
+   "expect": "6 行 IP/MAC + OK",
+   "got": "AT+CIFSR\r\n\r\n+CIFSR:APIP,\"192.168.4.1\"\r\n+CIFSR:APMAC,\"<MAC>\"\r\n+CIFSR:STAIP,\"<LOCAL_IP>\"\r\n+CIFSR:STAMAC,\"<MAC>\"\r\n+CIFSR:STADHCP,1,0\r\n+CIFSR:ETHIP,\"\"\r\n+CIFSR:ETHMAC,\"<MAC>\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"TCPC\",<HOST_IP>,8888",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"TCPC\",\"<HOST_IP>\",8888\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=5",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=5\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "发送 5 字节 (HELLO)",
+   "expect": "Recv 5 bytes + SEND OK",
+   "got": "\r\nRecv 5 bytes\r\nSEND OK\r\nHELLO",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 TCP 数据",
+   "expect": "服务端记录到连接",
+   "got": "[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",<HOST_IP>,8889",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",8889\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节 (PING/UDP)",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 UDP 数据",
+   "expect": "服务端记录到报文",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (UDP)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=4 (回环)",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=4\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节并收到 SEND OK",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "服务端收到完整 PING 包",
+   "expect": "单个 4 字节报文",
+   "got": "[b'PING']",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "回显数据回打串口",
+   "expect": "串口收到 PING",
+   "got": " Recv 4 bytes SEND OK PING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (回环)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"HTPC\",...",
+   "expect": "200 OK + 正文 + OK",
+   "got": "AT+CIPSTART=\"HTPC\",\"http://<HOST_IP>:8000/test.txt\"\r\nHTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 22\r\nConnection: close\r\n\r\nWT32-ETH01-AT-TEST-OK\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 HTTP 请求",
+   "expect": "hits>=1",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE?",
+   "expect": "+CIPMODE:0",
+   "got": "AT+CIPMODE?\r\n+CIPMODE:0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=1",
+   "expect": "OK",
+   "got": "AT+CIPMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "透传数据回环",
+   "expect": "收到原样数据",
+   "got": "",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "+++ 退出透传",
+   "expect": "+++ 后 AT 应答 OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=0",
+   "expect": "OK",
+   "got": "AT+CIPMODE=0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 1,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (透传)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "基础",
+   "cmd": "AT",
+   "expect": "OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "基础",
+   "cmd": "ATE0",
+   "expect": "OK",
+   "got": "ATE0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "基础",
+   "cmd": "AT (回显关闭)",
+   "expect": "OK 且不回显",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "基础",
+   "cmd": "ATE1",
+   "expect": "OK",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "基础",
+   "cmd": "AT+GMR",
+   "expect": "版本信息 + OK",
+   "got": "AT+GMR\r\n\r\nWT32-ETH01_AT_V1.1\r\nESP-IDF v5.3.2\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "基础",
+   "cmd": "AT+UART_DEF?",
+   "expect": "+UART_DEF:... + OK",
+   "got": "AT+UART_DEF?\r\n+UART_DEF:115200,8,1,0,0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "基础",
+   "cmd": "AT+UART_DEF=115200,8,1,0,0",
+   "expect": "OK",
+   "got": "AT+UART_DEF=115200,8,1,0,0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL?",
+   "expect": "+PASSCHANNEL:1~6",
+   "got": "AT+PASSCHANNEL?\r\n+PASSCHANNEL:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL=1",
+   "expect": "OK",
+   "got": "AT+PASSCHANNEL=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE?",
+   "expect": "+CWMODE:0~3",
+   "got": "AT+CWMODE?\r\n+CWMODE:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE=1",
+   "expect": "OK",
+   "got": "AT+CWMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP=\"%s\",\"***\"",
+   "expect": "<SSID>",
+   "got": "AT+CWJAP=\"<SSID>\",\"<PASSWORD>\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP?",
+   "expect": "+CWJAP:ssid,bssid,ch,rssi",
+   "got": "AT+CWJAP?\r\n+CWJAP:\"<SSID>\",<AP_BSSID>,11,-49\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF?",
+   "expect": "+CWDHCP_DEF:... + OK",
+   "got": "AT+CWDHCP_DEF?\r\n+CWDHCP_DEF:3,1\r\nDHCP:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF?",
+   "expect": "+CIPETH_DEF:ip,gw,mask",
+   "got": "AT+CIPETH_DEF?\r\n+CIPETH_DEF:\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF=\"192.168.2.250\",...",
+   "expect": "OK",
+   "got": "AT+CIPETH_DEF=\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1 (恢复)",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "AT+CIFSR",
+   "expect": "6 行 IP/MAC + OK",
+   "got": "AT+CIFSR\r\n\r\n+CIFSR:APIP,\"192.168.4.1\"\r\n+CIFSR:APMAC,\"<MAC>\"\r\n+CIFSR:STAIP,\"<LOCAL_IP>\"\r\n+CIFSR:STAMAC,\"<MAC>\"\r\n+CIFSR:STADHCP,1,0\r\n+CIFSR:ETHIP,\"\"\r\n+CIFSR:ETHMAC,\"<MAC>\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"TCPC\",<HOST_IP>,8888",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"TCPC\",\"<HOST_IP>\",8888\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=5",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=5\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "发送 5 字节 (HELLO)",
+   "expect": "Recv 5 bytes + SEND OK",
+   "got": "\r\nRecv 5 bytes\r\nSEND OK\r\nHELLO",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 TCP 数据",
+   "expect": "服务端记录到连接",
+   "got": "[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",<HOST_IP>,8889",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",8889\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节 (PING/UDP)",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 UDP 数据",
+   "expect": "服务端记录到报文",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (UDP)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=4 (回环)",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=4\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节并收到 SEND OK",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "服务端收到完整 PING 包",
+   "expect": "单个 4 字节报文",
+   "got": "[b'PING']",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "回显数据回打串口",
+   "expect": "串口收到 PING",
+   "got": " Recv 4 bytes SEND OK PING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (回环)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"HTPC\",...",
+   "expect": "200 OK + 正文 + OK",
+   "got": "AT+CIPSTART=\"HTPC\",\"http://<HOST_IP>:8000/test.txt\"\r\nHTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 22\r\nConnection: close\r\n\r\nWT32-ETH01-AT-TEST-OK\n\r\nOK\r\n\r\nCLOSED\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 HTTP 请求",
+   "expect": "hits>=1",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE?",
+   "expect": "+CIPMODE:0",
+   "got": "AT+CIPMODE?\r\n+CIPMODE:0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=1",
+   "expect": "OK",
+   "got": "AT+CIPMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "透传数据回环",
+   "expect": "收到原样数据",
+   "got": "",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "+++ 退出透传",
+   "expect": "+++ 后 AT 应答 OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=0",
+   "expect": "OK",
+   "got": "AT+CIPMODE=0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 2,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (透传)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "基础",
+   "cmd": "AT",
+   "expect": "OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "基础",
+   "cmd": "ATE0",
+   "expect": "OK",
+   "got": "ATE0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "基础",
+   "cmd": "AT (回显关闭)",
+   "expect": "OK 且不回显",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "基础",
+   "cmd": "ATE1",
+   "expect": "OK",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "基础",
+   "cmd": "AT+GMR",
+   "expect": "版本信息 + OK",
+   "got": "AT+GMR\r\n\r\nWT32-ETH01_AT_V1.1\r\nESP-IDF v5.3.2\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "基础",
+   "cmd": "AT+UART_DEF?",
+   "expect": "+UART_DEF:... + OK",
+   "got": "AT+UART_DEF?\r\n+UART_DEF:115200,8,1,0,0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "基础",
+   "cmd": "AT+UART_DEF=115200,8,1,0,0",
+   "expect": "OK",
+   "got": "AT+UART_DEF=115200,8,1,0,0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL?",
+   "expect": "+PASSCHANNEL:1~6",
+   "got": "AT+PASSCHANNEL?\r\n+PASSCHANNEL:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL=1",
+   "expect": "OK",
+   "got": "AT+PASSCHANNEL=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE?",
+   "expect": "+CWMODE:0~3",
+   "got": "AT+CWMODE?\r\n+CWMODE:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE=1",
+   "expect": "OK",
+   "got": "AT+CWMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP=\"%s\",\"***\"",
+   "expect": "<SSID>",
+   "got": "AT+CWJAP=\"<SSID>\",\"<PASSWORD>\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP?",
+   "expect": "+CWJAP:ssid,bssid,ch,rssi",
+   "got": "AT+CWJAP?\r\n+CWJAP:\"<SSID>\",<AP_BSSID>,11,-49\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF?",
+   "expect": "+CWDHCP_DEF:... + OK",
+   "got": "AT+CWDHCP_DEF?\r\n+CWDHCP_DEF:3,1\r\nDHCP:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF?",
+   "expect": "+CIPETH_DEF:ip,gw,mask",
+   "got": "AT+CIPETH_DEF?\r\n+CIPETH_DEF:\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF=\"192.168.2.250\",...",
+   "expect": "OK",
+   "got": "AT+CIPETH_DEF=\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1 (恢复)",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "AT+CIFSR",
+   "expect": "6 行 IP/MAC + OK",
+   "got": "AT+CIFSR\r\n\r\n+CIFSR:APIP,\"192.168.4.1\"\r\n+CIFSR:APMAC,\"<MAC>\"\r\n+CIFSR:STAIP,\"<LOCAL_IP>\"\r\n+CIFSR:STAMAC,\"<MAC>\"\r\n+CIFSR:STADHCP,1,0\r\n+CIFSR:ETHIP,\"\"\r\n+CIFSR:ETHMAC,\"<MAC>\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"TCPC\",<HOST_IP>,8888",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"TCPC\",\"<HOST_IP>\",8888\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=5",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=5\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "发送 5 字节 (HELLO)",
+   "expect": "Recv 5 bytes + SEND OK",
+   "got": "\r\nRecv 5 bytes\r\nSEND OK\r\nHELLO",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 TCP 数据",
+   "expect": "服务端记录到连接",
+   "got": "[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",<HOST_IP>,8889",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",8889\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节 (PING/UDP)",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 UDP 数据",
+   "expect": "服务端记录到报文",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (UDP)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=4 (回环)",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=4\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节并收到 SEND OK",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "服务端收到完整 PING 包",
+   "expect": "单个 4 字节报文",
+   "got": "[b'PING']",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "回显数据回打串口",
+   "expect": "串口收到 PING",
+   "got": " Recv 4 bytes SEND OK PING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (回环)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"HTPC\",...",
+   "expect": "200 OK + 正文 + OK",
+   "got": "AT+CIPSTART=\"HTPC\",\"http://<HOST_IP>:8000/test.txt\"\r\nHTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 22\r\nConnection: close\r\n\r\nWT32-ETH01-AT-TEST-OK\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 HTTP 请求",
+   "expect": "hits>=1",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE?",
+   "expect": "+CIPMODE:0",
+   "got": "AT+CIPMODE?\r\n+CIPMODE:0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=1",
+   "expect": "OK",
+   "got": "AT+CIPMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "透传数据回环",
+   "expect": "收到原样数据",
+   "got": "",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "+++ 退出透传",
+   "expect": "+++ 后 AT 应答 OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=0",
+   "expect": "OK",
+   "got": "AT+CIPMODE=0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 3,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (透传)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "基础",
+   "cmd": "AT",
+   "expect": "OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "基础",
+   "cmd": "ATE0",
+   "expect": "OK",
+   "got": "ATE0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "基础",
+   "cmd": "AT (回显关闭)",
+   "expect": "OK 且不回显",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "基础",
+   "cmd": "ATE1",
+   "expect": "OK",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "基础",
+   "cmd": "AT+GMR",
+   "expect": "版本信息 + OK",
+   "got": "AT+GMR\r\n\r\nWT32-ETH01_AT_V1.1\r\nESP-IDF v5.3.2\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "基础",
+   "cmd": "AT+UART_DEF?",
+   "expect": "+UART_DEF:... + OK",
+   "got": "AT+UART_DEF?\r\n+UART_DEF:115200,8,1,0,0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "基础",
+   "cmd": "AT+UART_DEF=115200,8,1,0,0",
+   "expect": "OK",
+   "got": "AT+UART_DEF=115200,8,1,0,0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL?",
+   "expect": "+PASSCHANNEL:1~6",
+   "got": "AT+PASSCHANNEL?\r\n+PASSCHANNEL:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL=1",
+   "expect": "OK",
+   "got": "AT+PASSCHANNEL=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE?",
+   "expect": "+CWMODE:0~3",
+   "got": "AT+CWMODE?\r\n+CWMODE:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE=1",
+   "expect": "OK",
+   "got": "AT+CWMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP=\"%s\",\"***\"",
+   "expect": "<SSID>",
+   "got": "AT+CWJAP=\"<SSID>\",\"<PASSWORD>\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP?",
+   "expect": "+CWJAP:ssid,bssid,ch,rssi",
+   "got": "AT+CWJAP?\r\n+CWJAP:\"<SSID>\",<AP_BSSID>,11,-49\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF?",
+   "expect": "+CWDHCP_DEF:... + OK",
+   "got": "AT+CWDHCP_DEF?\r\n+CWDHCP_DEF:3,1\r\nDHCP:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF?",
+   "expect": "+CIPETH_DEF:ip,gw,mask",
+   "got": "AT+CIPETH_DEF?\r\n+CIPETH_DEF:\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF=\"192.168.2.250\",...",
+   "expect": "OK",
+   "got": "AT+CIPETH_DEF=\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1 (恢复)",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "AT+CIFSR",
+   "expect": "6 行 IP/MAC + OK",
+   "got": "AT+CIFSR\r\n\r\n+CIFSR:APIP,\"192.168.4.1\"\r\n+CIFSR:APMAC,\"<MAC>\"\r\n+CIFSR:STAIP,\"<LOCAL_IP>\"\r\n+CIFSR:STAMAC,\"<MAC>\"\r\n+CIFSR:STADHCP,1,0\r\n+CIFSR:ETHIP,\"\"\r\n+CIFSR:ETHMAC,\"<MAC>\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"TCPC\",<HOST_IP>,8888",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"TCPC\",\"<HOST_IP>\",8888\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=5",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=5\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "发送 5 字节 (HELLO)",
+   "expect": "Recv 5 bytes + SEND OK",
+   "got": "\r\nRecv 5 bytes\r\nSEND OK\r\nHELLO",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 TCP 数据",
+   "expect": "服务端记录到连接",
+   "got": "[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",<HOST_IP>,8889",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",8889\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节 (PING/UDP)",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 UDP 数据",
+   "expect": "服务端记录到报文",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (UDP)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=4 (回环)",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=4\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节并收到 SEND OK",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "服务端收到完整 PING 包",
+   "expect": "单个 4 字节报文",
+   "got": "[b'PING']",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "回显数据回打串口",
+   "expect": "串口收到 PING",
+   "got": " Recv 4 bytes SEND OK PING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (回环)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"HTPC\",...",
+   "expect": "200 OK + 正文 + OK",
+   "got": "AT+CIPSTART=\"HTPC\",\"http://<HOST_IP>:8000/test.txt\"\r\nHTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 22\r\nConnection: close\r\n\r\nWT32-ETH01-AT-TEST-OK\n\r\nOK\r\n\r\nCLOSED\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 HTTP 请求",
+   "expect": "hits>=1",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE?",
+   "expect": "+CIPMODE:0",
+   "got": "AT+CIPMODE?\r\n+CIPMODE:0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=1",
+   "expect": "OK",
+   "got": "AT+CIPMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "透传数据回环",
+   "expect": "收到原样数据",
+   "got": "",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "+++ 退出透传",
+   "expect": "+++ 后 AT 应答 OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=0",
+   "expect": "OK",
+   "got": "AT+CIPMODE=0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 4,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (透传)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "基础",
+   "cmd": "AT",
+   "expect": "OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "基础",
+   "cmd": "ATE0",
+   "expect": "OK",
+   "got": "ATE0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "基础",
+   "cmd": "AT (回显关闭)",
+   "expect": "OK 且不回显",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "基础",
+   "cmd": "ATE1",
+   "expect": "OK",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "基础",
+   "cmd": "AT+GMR",
+   "expect": "版本信息 + OK",
+   "got": "AT+GMR\r\n\r\nWT32-ETH01_AT_V1.1\r\nESP-IDF v5.3.2\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "基础",
+   "cmd": "AT+UART_DEF?",
+   "expect": "+UART_DEF:... + OK",
+   "got": "AT+UART_DEF?\r\n+UART_DEF:115200,8,1,0,0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "基础",
+   "cmd": "AT+UART_DEF=115200,8,1,0,0",
+   "expect": "OK",
+   "got": "AT+UART_DEF=115200,8,1,0,0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL?",
+   "expect": "+PASSCHANNEL:1~6",
+   "got": "AT+PASSCHANNEL?\r\n+PASSCHANNEL:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL=1",
+   "expect": "OK",
+   "got": "AT+PASSCHANNEL=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE?",
+   "expect": "+CWMODE:0~3",
+   "got": "AT+CWMODE?\r\n+CWMODE:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE=1",
+   "expect": "OK",
+   "got": "AT+CWMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP=\"%s\",\"***\"",
+   "expect": "<SSID>",
+   "got": "AT+CWJAP=\"<SSID>\",\"<PASSWORD>\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP?",
+   "expect": "+CWJAP:ssid,bssid,ch,rssi",
+   "got": "AT+CWJAP?\r\n+CWJAP:\"<SSID>\",<AP_BSSID>,11,-50\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF?",
+   "expect": "+CWDHCP_DEF:... + OK",
+   "got": "AT+CWDHCP_DEF?\r\n+CWDHCP_DEF:3,1\r\nDHCP:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF?",
+   "expect": "+CIPETH_DEF:ip,gw,mask",
+   "got": "AT+CIPETH_DEF?\r\n+CIPETH_DEF:\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF=\"192.168.2.250\",...",
+   "expect": "OK",
+   "got": "AT+CIPETH_DEF=\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1 (恢复)",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "AT+CIFSR",
+   "expect": "6 行 IP/MAC + OK",
+   "got": "AT+CIFSR\r\n\r\n+CIFSR:APIP,\"192.168.4.1\"\r\n+CIFSR:APMAC,\"<MAC>\"\r\n+CIFSR:STAIP,\"<LOCAL_IP>\"\r\n+CIFSR:STAMAC,\"<MAC>\"\r\n+CIFSR:STADHCP,1,0\r\n+CIFSR:ETHIP,\"\"\r\n+CIFSR:ETHMAC,\"<MAC>\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"TCPC\",<HOST_IP>,8888",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"TCPC\",\"<HOST_IP>\",8888\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=5",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=5\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "发送 5 字节 (HELLO)",
+   "expect": "Recv 5 bytes + SEND OK",
+   "got": "\r\nRecv 5 bytes\r\nSEND OK\r\nHELLO",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 TCP 数据",
+   "expect": "服务端记录到连接",
+   "got": "[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",<HOST_IP>,8889",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",8889\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节 (PING/UDP)",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 UDP 数据",
+   "expect": "服务端记录到报文",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (UDP)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=4 (回环)",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=4\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节并收到 SEND OK",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "服务端收到完整 PING 包",
+   "expect": "单个 4 字节报文",
+   "got": "[b'PING']",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "回显数据回打串口",
+   "expect": "串口收到 PING",
+   "got": " Recv 4 bytes SEND OK PING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (回环)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"HTPC\",...",
+   "expect": "200 OK + 正文 + OK",
+   "got": "AT+CIPSTART=\"HTPC\",\"http://<HOST_IP>:8000/test.txt\"\r\nHTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 22\r\nConnection: close\r\n\r\nWT32-ETH01-AT-TEST-OK\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 HTTP 请求",
+   "expect": "hits>=1",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE?",
+   "expect": "+CIPMODE:0",
+   "got": "AT+CIPMODE?\r\n+CIPMODE:0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=1",
+   "expect": "OK",
+   "got": "AT+CIPMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "透传数据回环",
+   "expect": "收到原样数据",
+   "got": "",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "+++ 退出透传",
+   "expect": "+++ 后 AT 应答 OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=0",
+   "expect": "OK",
+   "got": "AT+CIPMODE=0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 5,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (透传)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "基础",
+   "cmd": "AT",
+   "expect": "OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "基础",
+   "cmd": "ATE0",
+   "expect": "OK",
+   "got": "ATE0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "基础",
+   "cmd": "AT (回显关闭)",
+   "expect": "OK 且不回显",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "基础",
+   "cmd": "ATE1",
+   "expect": "OK",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "基础",
+   "cmd": "AT+GMR",
+   "expect": "版本信息 + OK",
+   "got": "AT+GMR\r\n\r\nWT32-ETH01_AT_V1.1\r\nESP-IDF v5.3.2\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "基础",
+   "cmd": "AT+UART_DEF?",
+   "expect": "+UART_DEF:... + OK",
+   "got": "AT+UART_DEF?\r\n+UART_DEF:115200,8,1,0,0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "基础",
+   "cmd": "AT+UART_DEF=115200,8,1,0,0",
+   "expect": "OK",
+   "got": "AT+UART_DEF=115200,8,1,0,0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL?",
+   "expect": "+PASSCHANNEL:1~6",
+   "got": "AT+PASSCHANNEL?\r\n+PASSCHANNEL:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL=1",
+   "expect": "OK",
+   "got": "AT+PASSCHANNEL=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE?",
+   "expect": "+CWMODE:0~3",
+   "got": "AT+CWMODE?\r\n+CWMODE:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE=1",
+   "expect": "OK",
+   "got": "AT+CWMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP=\"%s\",\"***\"",
+   "expect": "<SSID>",
+   "got": "AT+CWJAP=\"<SSID>\",\"<PASSWORD>\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP?",
+   "expect": "+CWJAP:ssid,bssid,ch,rssi",
+   "got": "AT+CWJAP?\r\n+CWJAP:\"<SSID>\",<AP_BSSID>,11,-50\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF?",
+   "expect": "+CWDHCP_DEF:... + OK",
+   "got": "AT+CWDHCP_DEF?\r\n+CWDHCP_DEF:3,1\r\nDHCP:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF?",
+   "expect": "+CIPETH_DEF:ip,gw,mask",
+   "got": "AT+CIPETH_DEF?\r\n+CIPETH_DEF:\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF=\"192.168.2.250\",...",
+   "expect": "OK",
+   "got": "AT+CIPETH_DEF=\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1 (恢复)",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "AT+CIFSR",
+   "expect": "6 行 IP/MAC + OK",
+   "got": "AT+CIFSR\r\n\r\n+CIFSR:APIP,\"192.168.4.1\"\r\n+CIFSR:APMAC,\"<MAC>\"\r\n+CIFSR:STAIP,\"<LOCAL_IP>\"\r\n+CIFSR:STAMAC,\"<MAC>\"\r\n+CIFSR:STADHCP,1,0\r\n+CIFSR:ETHIP,\"\"\r\n+CIFSR:ETHMAC,\"<MAC>\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"TCPC\",<HOST_IP>,8888",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"TCPC\",\"<HOST_IP>\",8888\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=5",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=5\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "发送 5 字节 (HELLO)",
+   "expect": "Recv 5 bytes + SEND OK",
+   "got": "\r\nRecv 5 bytes\r\nSEND OK\r\nHELLO",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 TCP 数据",
+   "expect": "服务端记录到连接",
+   "got": "[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",<HOST_IP>,8889",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",8889\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节 (PING/UDP)",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 UDP 数据",
+   "expect": "服务端记录到报文",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (UDP)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=4 (回环)",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=4\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节并收到 SEND OK",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "服务端收到完整 PING 包",
+   "expect": "单个 4 字节报文",
+   "got": "[b'PING']",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "回显数据回打串口",
+   "expect": "串口收到 PING",
+   "got": " Recv 4 bytes SEND OK PING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (回环)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"HTPC\",...",
+   "expect": "200 OK + 正文 + OK",
+   "got": "AT+CIPSTART=\"HTPC\",\"http://<HOST_IP>:8000/test.txt\"\r\nHTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 22\r\nConnection: close\r\n\r\nWT32-ETH01-AT-TEST-OK\n\r\nOK\r\n\r\nCLOSED\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 HTTP 请求",
+   "expect": "hits>=1",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE?",
+   "expect": "+CIPMODE:0",
+   "got": "AT+CIPMODE?\r\n+CIPMODE:0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=1",
+   "expect": "OK",
+   "got": "AT+CIPMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "透传数据回环",
+   "expect": "收到原样数据",
+   "got": "",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "+++ 退出透传",
+   "expect": "+++ 后 AT 应答 OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=0",
+   "expect": "OK",
+   "got": "AT+CIPMODE=0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 6,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (透传)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "基础",
+   "cmd": "AT",
+   "expect": "OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "基础",
+   "cmd": "ATE0",
+   "expect": "OK",
+   "got": "ATE0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "基础",
+   "cmd": "AT (回显关闭)",
+   "expect": "OK 且不回显",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "基础",
+   "cmd": "ATE1",
+   "expect": "OK",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "基础",
+   "cmd": "AT+GMR",
+   "expect": "版本信息 + OK",
+   "got": "AT+GMR\r\n\r\nWT32-ETH01_AT_V1.1\r\nESP-IDF v5.3.2\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "基础",
+   "cmd": "AT+UART_DEF?",
+   "expect": "+UART_DEF:... + OK",
+   "got": "AT+UART_DEF?\r\n+UART_DEF:115200,8,1,0,0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "基础",
+   "cmd": "AT+UART_DEF=115200,8,1,0,0",
+   "expect": "OK",
+   "got": "AT+UART_DEF=115200,8,1,0,0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL?",
+   "expect": "+PASSCHANNEL:1~6",
+   "got": "AT+PASSCHANNEL?\r\n+PASSCHANNEL:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL=1",
+   "expect": "OK",
+   "got": "AT+PASSCHANNEL=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE?",
+   "expect": "+CWMODE:0~3",
+   "got": "AT+CWMODE?\r\n+CWMODE:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE=1",
+   "expect": "OK",
+   "got": "AT+CWMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP=\"%s\",\"***\"",
+   "expect": "<SSID>",
+   "got": "AT+CWJAP=\"<SSID>\",\"<PASSWORD>\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP?",
+   "expect": "+CWJAP:ssid,bssid,ch,rssi",
+   "got": "AT+CWJAP?\r\n+CWJAP:\"<SSID>\",<AP_BSSID>,11,-51\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF?",
+   "expect": "+CWDHCP_DEF:... + OK",
+   "got": "AT+CWDHCP_DEF?\r\n+CWDHCP_DEF:3,1\r\nDHCP:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF?",
+   "expect": "+CIPETH_DEF:ip,gw,mask",
+   "got": "AT+CIPETH_DEF?\r\n+CIPETH_DEF:\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF=\"192.168.2.250\",...",
+   "expect": "OK",
+   "got": "AT+CIPETH_DEF=\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1 (恢复)",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "AT+CIFSR",
+   "expect": "6 行 IP/MAC + OK",
+   "got": "AT+CIFSR\r\n\r\n+CIFSR:APIP,\"192.168.4.1\"\r\n+CIFSR:APMAC,\"<MAC>\"\r\n+CIFSR:STAIP,\"<LOCAL_IP>\"\r\n+CIFSR:STAMAC,\"<MAC>\"\r\n+CIFSR:STADHCP,1,0\r\n+CIFSR:ETHIP,\"\"\r\n+CIFSR:ETHMAC,\"<MAC>\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"TCPC\",<HOST_IP>,8888",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"TCPC\",\"<HOST_IP>\",8888\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=5",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=5\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "发送 5 字节 (HELLO)",
+   "expect": "Recv 5 bytes + SEND OK",
+   "got": "\r\nRecv 5 bytes\r\nSEND OK\r\nHELLO",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 TCP 数据",
+   "expect": "服务端记录到连接",
+   "got": "[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",<HOST_IP>,8889",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",8889\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节 (PING/UDP)",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 UDP 数据",
+   "expect": "服务端记录到报文",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (UDP)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=4 (回环)",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=4\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节并收到 SEND OK",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "服务端收到完整 PING 包",
+   "expect": "单个 4 字节报文",
+   "got": "[b'PING']",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "回显数据回打串口",
+   "expect": "串口收到 PING",
+   "got": " Recv 4 bytes SEND OK PING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (回环)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"HTPC\",...",
+   "expect": "200 OK + 正文 + OK",
+   "got": "AT+CIPSTART=\"HTPC\",\"http://<HOST_IP>:8000/test.txt\"\r\nHTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 22\r\nConnection: close\r\n\r\nWT32-ETH01-AT-TEST-OK\n\r\nOK\r\n\r\nCLOSED\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 HTTP 请求",
+   "expect": "hits>=1",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE?",
+   "expect": "+CIPMODE:0",
+   "got": "AT+CIPMODE?\r\n+CIPMODE:0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=1",
+   "expect": "OK",
+   "got": "AT+CIPMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "透传数据回环",
+   "expect": "收到原样数据",
+   "got": "",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "+++ 退出透传",
+   "expect": "+++ 后 AT 应答 OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=0",
+   "expect": "OK",
+   "got": "AT+CIPMODE=0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 7,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (透传)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "基础",
+   "cmd": "AT",
+   "expect": "OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "基础",
+   "cmd": "ATE0",
+   "expect": "OK",
+   "got": "ATE0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "基础",
+   "cmd": "AT (回显关闭)",
+   "expect": "OK 且不回显",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "基础",
+   "cmd": "ATE1",
+   "expect": "OK",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "基础",
+   "cmd": "AT+GMR",
+   "expect": "版本信息 + OK",
+   "got": "AT+GMR\r\n\r\nWT32-ETH01_AT_V1.1\r\nESP-IDF v5.3.2\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "基础",
+   "cmd": "AT+UART_DEF?",
+   "expect": "+UART_DEF:... + OK",
+   "got": "AT+UART_DEF?\r\n+UART_DEF:115200,8,1,0,0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "基础",
+   "cmd": "AT+UART_DEF=115200,8,1,0,0",
+   "expect": "OK",
+   "got": "AT+UART_DEF=115200,8,1,0,0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL?",
+   "expect": "+PASSCHANNEL:1~6",
+   "got": "AT+PASSCHANNEL?\r\n+PASSCHANNEL:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL=1",
+   "expect": "OK",
+   "got": "AT+PASSCHANNEL=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE?",
+   "expect": "+CWMODE:0~3",
+   "got": "AT+CWMODE?\r\n+CWMODE:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE=1",
+   "expect": "OK",
+   "got": "AT+CWMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP=\"%s\",\"***\"",
+   "expect": "<SSID>",
+   "got": "AT+CWJAP=\"<SSID>\",\"<PASSWORD>\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP?",
+   "expect": "+CWJAP:ssid,bssid,ch,rssi",
+   "got": "AT+CWJAP?\r\n+CWJAP:\"<SSID>\",<AP_BSSID>,11,-50\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF?",
+   "expect": "+CWDHCP_DEF:... + OK",
+   "got": "AT+CWDHCP_DEF?\r\n+CWDHCP_DEF:3,1\r\nDHCP:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF?",
+   "expect": "+CIPETH_DEF:ip,gw,mask",
+   "got": "AT+CIPETH_DEF?\r\n+CIPETH_DEF:\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF=\"192.168.2.250\",...",
+   "expect": "OK",
+   "got": "AT+CIPETH_DEF=\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1 (恢复)",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "AT+CIFSR",
+   "expect": "6 行 IP/MAC + OK",
+   "got": "AT+CIFSR\r\n\r\n+CIFSR:APIP,\"192.168.4.1\"\r\n+CIFSR:APMAC,\"<MAC>\"\r\n+CIFSR:STAIP,\"<LOCAL_IP>\"\r\n+CIFSR:STAMAC,\"<MAC>\"\r\n+CIFSR:STADHCP,1,0\r\n+CIFSR:ETHIP,\"\"\r\n+CIFSR:ETHMAC,\"<MAC>\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"TCPC\",<HOST_IP>,8888",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"TCPC\",\"<HOST_IP>\",8888\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=5",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=5\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "发送 5 字节 (HELLO)",
+   "expect": "Recv 5 bytes + SEND OK",
+   "got": "\r\nRecv 5 bytes\r\nSEND OK\r\nHELLO",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 TCP 数据",
+   "expect": "服务端记录到连接",
+   "got": "[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",<HOST_IP>,8889",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",8889\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节 (PING/UDP)",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 UDP 数据",
+   "expect": "服务端记录到报文",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (UDP)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=4 (回环)",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=4\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节并收到 SEND OK",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "服务端收到完整 PING 包",
+   "expect": "单个 4 字节报文",
+   "got": "[b'PING']",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "回显数据回打串口",
+   "expect": "串口收到 PING",
+   "got": " Recv 4 bytes SEND OK PING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (回环)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"HTPC\",...",
+   "expect": "200 OK + 正文 + OK",
+   "got": "AT+CIPSTART=\"HTPC\",\"http://<HOST_IP>:8000/test.txt\"\r\nHTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 22\r\nConnection: close\r\n\r\nWT32-ETH01-AT-TEST-OK\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 HTTP 请求",
+   "expect": "hits>=1",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE?",
+   "expect": "+CIPMODE:0",
+   "got": "AT+CIPMODE?\r\n+CIPMODE:0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=1",
+   "expect": "OK",
+   "got": "AT+CIPMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "透传数据回环",
+   "expect": "收到原样数据",
+   "got": "",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "+++ 退出透传",
+   "expect": "+++ 后 AT 应答 OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=0",
+   "expect": "OK",
+   "got": "AT+CIPMODE=0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 8,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (透传)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "基础",
+   "cmd": "AT",
+   "expect": "OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "基础",
+   "cmd": "ATE0",
+   "expect": "OK",
+   "got": "ATE0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "基础",
+   "cmd": "AT (回显关闭)",
+   "expect": "OK 且不回显",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "基础",
+   "cmd": "ATE1",
+   "expect": "OK",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "基础",
+   "cmd": "AT+GMR",
+   "expect": "版本信息 + OK",
+   "got": "AT+GMR\r\n\r\nWT32-ETH01_AT_V1.1\r\nESP-IDF v5.3.2\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "基础",
+   "cmd": "AT+UART_DEF?",
+   "expect": "+UART_DEF:... + OK",
+   "got": "AT+UART_DEF?\r\n+UART_DEF:115200,8,1,0,0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "基础",
+   "cmd": "AT+UART_DEF=115200,8,1,0,0",
+   "expect": "OK",
+   "got": "AT+UART_DEF=115200,8,1,0,0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL?",
+   "expect": "+PASSCHANNEL:1~6",
+   "got": "AT+PASSCHANNEL?\r\n+PASSCHANNEL:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL=1",
+   "expect": "OK",
+   "got": "AT+PASSCHANNEL=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE?",
+   "expect": "+CWMODE:0~3",
+   "got": "AT+CWMODE?\r\n+CWMODE:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE=1",
+   "expect": "OK",
+   "got": "AT+CWMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP=\"%s\",\"***\"",
+   "expect": "<SSID>",
+   "got": "AT+CWJAP=\"<SSID>\",\"<PASSWORD>\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP?",
+   "expect": "+CWJAP:ssid,bssid,ch,rssi",
+   "got": "AT+CWJAP?\r\n+CWJAP:\"<SSID>\",<AP_BSSID>,11,-48\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF?",
+   "expect": "+CWDHCP_DEF:... + OK",
+   "got": "AT+CWDHCP_DEF?\r\n+CWDHCP_DEF:3,1\r\nDHCP:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF?",
+   "expect": "+CIPETH_DEF:ip,gw,mask",
+   "got": "AT+CIPETH_DEF?\r\n+CIPETH_DEF:\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF=\"192.168.2.250\",...",
+   "expect": "OK",
+   "got": "AT+CIPETH_DEF=\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1 (恢复)",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "AT+CIFSR",
+   "expect": "6 行 IP/MAC + OK",
+   "got": "AT+CIFSR\r\n\r\n+CIFSR:APIP,\"192.168.4.1\"\r\n+CIFSR:APMAC,\"<MAC>\"\r\n+CIFSR:STAIP,\"<LOCAL_IP>\"\r\n+CIFSR:STAMAC,\"<MAC>\"\r\n+CIFSR:STADHCP,1,0\r\n+CIFSR:ETHIP,\"\"\r\n+CIFSR:ETHMAC,\"<MAC>\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"TCPC\",<HOST_IP>,8888",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"TCPC\",\"<HOST_IP>\",8888\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=5",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=5\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "发送 5 字节 (HELLO)",
+   "expect": "Recv 5 bytes + SEND OK",
+   "got": "\r\nRecv 5 bytes\r\nSEND OK\r\nHELLO",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 TCP 数据",
+   "expect": "服务端记录到连接",
+   "got": "[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",<HOST_IP>,8889",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",8889\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节 (PING/UDP)",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 UDP 数据",
+   "expect": "服务端记录到报文",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (UDP)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=4 (回环)",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=4\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节并收到 SEND OK",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "服务端收到完整 PING 包",
+   "expect": "单个 4 字节报文",
+   "got": "[b'PING']",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "回显数据回打串口",
+   "expect": "串口收到 PING",
+   "got": " Recv 4 bytes SEND OK PING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (回环)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"HTPC\",...",
+   "expect": "200 OK + 正文 + OK",
+   "got": "AT+CIPSTART=\"HTPC\",\"http://<HOST_IP>:8000/test.txt\"\r\nHTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 22\r\nConnection: close\r\n\r\nWT32-ETH01-AT-TEST-OK\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 HTTP 请求",
+   "expect": "hits>=1",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE?",
+   "expect": "+CIPMODE:0",
+   "got": "AT+CIPMODE?\r\n+CIPMODE:0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=1",
+   "expect": "OK",
+   "got": "AT+CIPMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "透传数据回环",
+   "expect": "收到原样数据",
+   "got": "",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "+++ 退出透传",
+   "expect": "+++ 后 AT 应答 OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=0",
+   "expect": "OK",
+   "got": "AT+CIPMODE=0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 9,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (透传)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "基础",
+   "cmd": "AT",
+   "expect": "OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "基础",
+   "cmd": "ATE0",
+   "expect": "OK",
+   "got": "ATE0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "基础",
+   "cmd": "AT (回显关闭)",
+   "expect": "OK 且不回显",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "基础",
+   "cmd": "ATE1",
+   "expect": "OK",
+   "got": "\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "基础",
+   "cmd": "AT+GMR",
+   "expect": "版本信息 + OK",
+   "got": "AT+GMR\r\n\r\nWT32-ETH01_AT_V1.1\r\nESP-IDF v5.3.2\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "基础",
+   "cmd": "AT+UART_DEF?",
+   "expect": "+UART_DEF:... + OK",
+   "got": "AT+UART_DEF?\r\n+UART_DEF:115200,8,1,0,0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "基础",
+   "cmd": "AT+UART_DEF=115200,8,1,0,0",
+   "expect": "OK",
+   "got": "AT+UART_DEF=115200,8,1,0,0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL?",
+   "expect": "+PASSCHANNEL:1~6",
+   "got": "AT+PASSCHANNEL?\r\n+PASSCHANNEL:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "基础",
+   "cmd": "AT+PASSCHANNEL=1",
+   "expect": "OK",
+   "got": "AT+PASSCHANNEL=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE?",
+   "expect": "+CWMODE:0~3",
+   "got": "AT+CWMODE?\r\n+CWMODE:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "WiFi",
+   "cmd": "AT+CWMODE=1",
+   "expect": "OK",
+   "got": "AT+CWMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP=\"%s\",\"***\"",
+   "expect": "<SSID>",
+   "got": "AT+CWJAP=\"<SSID>\",\"<PASSWORD>\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "WiFi",
+   "cmd": "AT+CWJAP?",
+   "expect": "+CWJAP:ssid,bssid,ch,rssi",
+   "got": "AT+CWJAP?\r\n+CWJAP:\"<SSID>\",<AP_BSSID>,11,-50\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF?",
+   "expect": "+CWDHCP_DEF:... + OK",
+   "got": "AT+CWDHCP_DEF?\r\n+CWDHCP_DEF:3,1\r\nDHCP:1\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF?",
+   "expect": "+CIPETH_DEF:ip,gw,mask",
+   "got": "AT+CIPETH_DEF?\r\n+CIPETH_DEF:\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "以太网",
+   "cmd": "AT+CIPETH_DEF=\"192.168.2.250\",...",
+   "expect": "OK",
+   "got": "AT+CIPETH_DEF=\"192.168.2.250\",\"192.168.2.1\",\"255.255.255.0\"\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "以太网",
+   "cmd": "AT+CWDHCP_DEF=3,1 (恢复)",
+   "expect": "OK",
+   "got": "AT+CWDHCP_DEF=3,1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "AT+CIFSR",
+   "expect": "6 行 IP/MAC + OK",
+   "got": "AT+CIFSR\r\n\r\n+CIFSR:APIP,\"192.168.4.1\"\r\n+CIFSR:APMAC,\"<MAC>\"\r\n+CIFSR:STAIP,\"<LOCAL_IP>\"\r\n+CIFSR:STAMAC,\"<MAC>\"\r\n+CIFSR:STADHCP,1,0\r\n+CIFSR:ETHIP,\"\"\r\n+CIFSR:ETHMAC,\"<MAC>\"\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"TCPC\",<HOST_IP>,8888",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"TCPC\",\"<HOST_IP>\",8888\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=5",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=5\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "发送 5 字节 (HELLO)",
+   "expect": "Recv 5 bytes + SEND OK",
+   "got": "\r\nRecv 5 bytes\r\nSEND OK\r\nHELLO",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 TCP 数据",
+   "expect": "服务端记录到连接",
+   "got": "[('<LOCAL_IP>', <EPHEMERAL_PORT>)]",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",<HOST_IP>,8889",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",8889\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节 (PING/UDP)",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 UDP 数据",
+   "expect": "服务端记录到报文",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (UDP)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999",
+   "expect": "OK",
+   "got": "AT+CIPSTART=\"UDPC\",\"<HOST_IP>\",9999\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSEND=4 (回环)",
+   "expect": "提示符 >",
+   "got": "AT+CIPSEND=4\r\n\r\n> ",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "发送 4 字节并收到 SEND OK",
+   "expect": "Recv 4 bytes + SEND OK",
+   "got": "\r\nRecv 4 bytes\r\nSEND OK\r\nPING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "服务端收到完整 PING 包",
+   "expect": "单个 4 字节报文",
+   "got": "[b'PING']",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "回显数据回打串口",
+   "expect": "串口收到 PING",
+   "got": " Recv 4 bytes SEND OK PING",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (回环)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPSTART=\"HTPC\",...",
+   "expect": "200 OK + 正文 + OK",
+   "got": "AT+CIPSTART=\"HTPC\",\"http://<HOST_IP>:8000/test.txt\"\r\nHTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: 22\r\nConnection: close\r\n\r\nWT32-ETH01-AT-TEST-OK\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "服务端收到 HTTP 请求",
+   "expect": "hits>=1",
+   "got": "hits=1",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE?",
+   "expect": "+CIPMODE:0",
+   "got": "AT+CIPMODE?\r\n+CIPMODE:0\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=1",
+   "expect": "OK",
+   "got": "AT+CIPMODE=1\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "透传数据回环",
+   "expect": "收到原样数据",
+   "got": "",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "+++ 退出透传",
+   "expect": "+++ 后 AT 应答 OK",
+   "got": "AT\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPMODE=0",
+   "expect": "OK",
+   "got": "AT+CIPMODE=0\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "round": 10,
+   "group": "TCP/IP",
+   "cmd": "AT+CIPCLOSE (透传)",
+   "expect": "CLOSED + OK",
+   "got": "AT+CIPCLOSE\r\n\r\nCLOSED\r\n\r\nOK\r\n",
+   "ok": true,
+   "note": ""
+  }
+ ]
+}
